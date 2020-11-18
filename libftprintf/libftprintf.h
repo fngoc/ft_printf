@@ -25,4 +25,12 @@ void	ft_print_unsigned_int(int a);
 
 void	ft_print_adress(void *a);
 
+int		ft_atoi(const char *str);
+
+int		ft_isdigit(int c);
+
+int		dec_in_bin(int num);
+
+void	ft_putstr_fd_print_int_str(char *s, int fd, int f);
+
 #endif
