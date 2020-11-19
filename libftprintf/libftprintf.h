@@ -5,7 +5,16 @@
 # include <stdlib.h>
 # include <stdarg.h>
 
-int		ft_printf(const char *format, ...);
+typedef struct		s_parser
+{
+	char			flags;
+	unsigned int	width;
+	char			dot;
+	unsigned int	number_after_dot;
+	char			type;
+}					t_parser;
+
+t_parser		ft_printf(const char *format, ...);
 
 void	ft_putnbr_fd(long int n, int fd);
 
@@ -32,5 +41,9 @@ int		ft_isdigit(int c);
 int		dec_in_bin(int num);
 
 void	ft_putstr_fd_print_int_str(char *s, int fd, int f);
+
+t_parser	ft_parser(char *str);
+
+int	ft_count_not_N_in_p(t_parser p);
 
 #endif
