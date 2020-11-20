@@ -4,15 +4,20 @@
 # include <unistd.h>
 # include <stdlib.h>
 # include <stdarg.h>
+# include <stdio.h> // Для printf
 
 typedef struct		s_parser
 {
-	char			flags;
+	unsigned int	flags;
 	unsigned int	width;
-	char			dot;
+	unsigned int	dot;
 	unsigned int	number_after_dot;
-	char			type;
+	unsigned int	type;
 }					t_parser;
+
+va_list				ap;
+
+int					count;
 
 t_parser		ft_printf(const char *format, ...);
 
@@ -42,8 +47,10 @@ int		dec_in_bin(int num);
 
 void	ft_putstr_fd_print_int_str(char *s, int fd, int f);
 
-t_parser	ft_parser(char *str);
+t_parser	ft_parser(char **str);
 
-int	ft_count_not_N_in_p(t_parser p);
+int		ft_count_not_N_in_p(t_parser p);
+
+int		ft_print_parser(t_parser p);
 
 #endif

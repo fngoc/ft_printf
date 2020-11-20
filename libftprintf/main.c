@@ -21,10 +21,10 @@ int		main(void)
 	
 	/* Тестирование */
 //	printf("%7.9s\n", "helloItsme");
-//	printf("%07d\n", 125);
+//	printf("%");
 	t_parser a;
-	a = ft_printf("Hello %-*.*d", 6);
-	printf("%c\n %d\n %c\n %d\n %c\n", a.flags, a.width, a.dot, a.number_after_dot, a.type);
-//	printf("%7d", 21);
+//	a = ft_printf("Hello %-0.5dxworld\n", 6);
+//	printf("Start pars:\n%c\n%d\n%c\n%d\n%c\n", a.flags, a.width, a.dot, a.number_after_dot, a.type);
+	a = ft_printf("%d\n%s\n%c\n", 21, "lol", 't');
 	return (0);
 }

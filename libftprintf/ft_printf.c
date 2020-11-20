@@ -1,5 +1,4 @@
 #include "libftprintf.h"
-#include "stdio.h"
 
 /*
 ** ft_printf: читает и выводит свои аргументы.
@@ -7,22 +6,21 @@
 
 t_parser		ft_printf(const char *format, ...)
 {
-	va_list ap;
 	t_parser p;
 	char *str;
-	int count;
 	int count_not_N;
 
 	va_start(ap, format);
 	while (*format)
 	{
-		if (*format++ != '%')
+		if (*format != '%')
 		{
 			write(1, format, 1);
 			++count;
 		}
 		else
 		{
+			format++;
 			if (*format == '%')
 			{
 				write(1, format, 1);
@@ -30,12 +28,13 @@ t_parser		ft_printf(const char *format, ...)
 			}
 			else
 			{
-				p = ft_parser((char *)format);
-				count_not_N = ft_count_not_N_in_p(p);
-				format += count_not_N;
-//				ft_print_parser(p);
+				p = ft_parser((char **)&format);
+				ft_print_parser(p);
+//				count_not_N = ft_count_not_N_in_p(p);
+
 			}
 		}
+		format++;
 	}
 	va_end(ap);
 	return (p);
