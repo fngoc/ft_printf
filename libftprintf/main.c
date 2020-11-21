@@ -18,13 +18,15 @@ int		main(void)
 //	ft_printf("%d\n", dec_in_bin(5));
 
 //	ft_printf("%.5d\n", 5);
-	
+
 	/* Тестирование */
-//	printf("%7.9s\n", "helloItsme");
-//	printf("%");
 	t_parser a;
-//	a = ft_printf("Hello %-0.5dxworld\n", 6);
-//	printf("Start pars:\n%c\n%d\n%c\n%d\n%c\n", a.flags, a.width, a.dot, a.number_after_dot, a.type);
-	a = ft_printf("%d\n%s\n%c\n", 21, "lol", 't');
+//	printf("%7.9s\n", "helloItsme");
+//	printf("%"); /* Вызывает ошибку */
+//	a = ft_printf("Hello %-0.5d world\n", 6);
+	printf("%*s\n", 45, "hello");
+	a = ft_printf("%*s\n", 45, "hello");
+//	a = ft_printf("%d\n%s\n%c\n%%\n%s\n%d\n", 21, "lol", 't', "kek", 17);
+	printf("Start pars:\n%c\n%d\n%c\n%d\n%c\n", a.flags, a.width, a.dot, a.number_after_dot, a.type);
 	return (0);
 }
