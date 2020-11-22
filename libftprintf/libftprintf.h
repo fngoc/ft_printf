@@ -59,10 +59,22 @@ void		ft_putnbr_fd_mod(long int n, int fd, int coll_tabs);
 
 void	ft_puttab(int col, int fd);
 
-int		ft_digit_num(int n);
+int		ft_digit_num(long int n);
 
 void	two_arg_s(t_parser p);
 
 void	ft_putstr_fd_mod(char *s, int fd, int coll_tabs);
+
+void	two_arg_c(t_parser p);
+
+void	ft_putchar_fd_mod(char c, int fd, int coll_tabs);
+
+void	two_arg_p(t_parser p);
+
+void	ft_print_adress_mod(void *a, int coll_tabs);
+
+void	two_arg_u(t_parser p);
+
+void	ft_print_unsigned_int_mod(int a, int coll_tabs);
 
 #endif

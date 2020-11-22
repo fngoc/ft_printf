@@ -5,7 +5,7 @@
 */
 
 
-int		ft_digit_num(int n)
+int		ft_digit_num(long int n)
 {
 	int tmp;
 	int tmp2;

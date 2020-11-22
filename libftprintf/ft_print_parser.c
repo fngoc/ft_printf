@@ -12,13 +12,13 @@ void	ft_print_parser_chek_two(t_parser p)
 		else if (p.type == 's')
 			two_arg_s(p);
 		else if (p.type == 'c')
-			ft_putchar_fd(va_arg(ap, int), 1);
+			two_arg_c(p);
 		else if (p.type == '%')
 			ft_putchar_fd('%', 1);
 		else if (p.type == 'p')
-			ft_print_adress(va_arg(ap, void *));
+			two_arg_p(p);
 		else if (p.type == 'u')
-			ft_print_unsigned_int(va_arg(ap, int));
+			two_arg_u(p);
 		else if (p.type == 'x')
 			ft_print_hex_little(va_arg(ap, int));
 		else if (p.type == 'X')

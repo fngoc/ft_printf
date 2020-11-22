@@ -40,7 +40,6 @@ t_parser		ft_printf(const char *format, ...)
 	return (p);
 }
 
-
 //			if (*format == 'd' || *format == 'i')
 //				ft_putnbr_fd(va_arg(ap, int), 1);
 //			if (*format == 's')

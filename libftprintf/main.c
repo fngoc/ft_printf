@@ -24,8 +24,9 @@ int		main(void)
 //	printf("%7.9s\n", "helloItsme");
 //	printf("%"); /* Вызывает ошибку */
 //	a = ft_printf("Hello %-0.5d world\n", 6);
-	printf("%*s\n", 45, "hello");
-	a = ft_printf("%*s\n", 45, "hello");
+//	int b;
+	printf("%19u\n", -42);
+	a = ft_printf("%19u\n", -42);
 //	a = ft_printf("%d\n%s\n%c\n%%\n%s\n%d\n", 21, "lol", 't', "kek", 17);
 	printf("Start pars:\n%c\n%d\n%c\n%d\n%c\n", a.flags, a.width, a.dot, a.number_after_dot, a.type);
 	return (0);
