@@ -58,6 +58,11 @@ void	ft_parser_dot(char **str, t_parser *p)
 
 void	ft_parser_width(char **str, t_parser *p)
 {
+	if ((*p).width == '*')
+	{
+		++*str;
+		return ;
+	}
 	if (**str == '*')
 		(*p).width = '*';
 	if (ft_isdigit(**str))
@@ -65,7 +70,7 @@ void	ft_parser_width(char **str, t_parser *p)
 	else
 		(*p).width = 'N';
 	if ((*p).width != 'N')
-		++*str;
+		*str = *str + ft_digit_num((*p).width);
 }
 
 /*
@@ -75,13 +80,19 @@ void	ft_parser_width(char **str, t_parser *p)
 void	ft_parser_flags(char **str, t_parser *p)
 {
 	if (**str == '-')
+	{
 		(*p).flags = '-';
+		++*str;
+	}
 	else if (**str == '0')
+	{
 		(*p).flags = '0';
+		++*str;
+	}
 	else
 		(*p).flags = 'N';
-	if ((*p).flags != 'N')
-		++*str;
+	if (**str == '*')
+		(*p).width = '*';
 }
 
 /*

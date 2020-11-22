@@ -53,4 +53,16 @@ int		ft_count_not_N_in_p(t_parser p);
 
 int		ft_print_parser(t_parser p);
 
+void	two_arg_d(t_parser p);
+
+void		ft_putnbr_fd_mod(long int n, int fd, int coll_tabs);
+
+void	ft_puttab(int col, int fd);
+
+int		ft_digit_num(int n);
+
+void	two_arg_s(t_parser p);
+
+void	ft_putstr_fd_mod(char *s, int fd, int coll_tabs);
+
 #endif

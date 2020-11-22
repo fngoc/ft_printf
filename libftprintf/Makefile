@@ -8,7 +8,8 @@ SRC = ft_printf.c ft_putnbr_fd.c ft_putstr_fd.c ft_strlen.c ft_putchar_fd.c\
 	ft_reverse.c ft_print_hex_big.c ft_print_hex_little.c ft_print_unsigned_int.c\
 	ft_print_adress.c ft_atoi.c ft_isdigit.c dec_in_bin.c\
 	ft_putstr_fd_print_int_str.c ft_parser.c ft_count_not_N_in_p.c\
-	ft_print_parser.c
+	ft_print_parser.c ft_putnbr_fd_mod.c two_arg_utils.c ft_puttab.c\
+	ft_digit_num.c ft_putstr_fd_mod.c
 
 OBJ = $(SRC:.c=.o)
 
