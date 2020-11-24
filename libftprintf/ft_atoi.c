@@ -28,5 +28,5 @@ int	ft_atoi(const char *str)
 			return ((sign == 1) ? -1 : 0);
 		i++;
 	}
-	return (sign * n);
+	return ((int)(sign * n));
 }

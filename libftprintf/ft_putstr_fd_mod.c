@@ -1,11 +1,11 @@
 #include "libftprintf.h"
 
 /*
-** ft_putstr_fd_mod: Выводит строку в
+** ft_putstr_fd: Выводит строку в
 ** указанный файл дескриптор.
 */
 
-void	ft_putstr_fd_mod(char *s, int fd, int coll_tabs)
+void	ft_putstr_fd_mod(char *s, int fd, t_parser *p)
 {
 	int len;
 	int i;
@@ -14,7 +14,6 @@ void	ft_putstr_fd_mod(char *s, int fd, int coll_tabs)
 		return ;
 	i = 0;
 	len = ft_strlen(s);
-	ft_puttab(coll_tabs - len, 1);
 	while (i < len)
-		write(fd, &s[i++], 1);
+		ft_putchar_fd(s[i++], fd, p);
 }

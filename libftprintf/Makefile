@@ -4,14 +4,12 @@ NAME = libftprintf.a
 
 HEADER = libftprintf.h
 
-SRC = ft_printf.c ft_putnbr_fd.c ft_putstr_fd.c ft_strlen.c ft_putchar_fd.c\
-	ft_reverse.c ft_print_hex_big.c ft_print_hex_little.c ft_print_unsigned_int.c\
-	ft_print_adress.c ft_atoi.c ft_isdigit.c dec_in_bin.c\
-	ft_putstr_fd_print_int_str.c ft_parser.c ft_count_not_N_in_p.c\
-	ft_print_parser.c ft_putnbr_fd_mod.c two_arg_utils.c ft_puttab.c\
-	ft_digit_num.c ft_putstr_fd_mod.c ft_putchar_fd_mod.c ft_print_adress_mod.c\
-	ft_print_unsigned_int_mod.c
-
+SRC = ft_printf.c ft_putnbr_fd.c ft_atoi.c ft_digit_num.c ft_isdigit.c\
+		ft_newtparser.c ft_parser.c ft_print_parser.c ft_putchar_fd_mod.c\
+		ft_putchar_fd.c ft_puttab.c ft_print_d_or_i.c ft_print_c.c\
+		ft_chek_width_and_numberafterdot.c ft_strlen.c ft_putstr_fd_mod.c\
+		ft_putstr_fd_mod_col.c ft_print_s.c
+		
 OBJ = $(SRC:.c=.o)
 
 FLAG = -Wall -Werror -Wextra

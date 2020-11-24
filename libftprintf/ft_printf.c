@@ -1,43 +1,34 @@
 #include "libftprintf.h"
 
 /*
-** ft_printf: читает и выводит свои аргументы.
+** ft_printf: читает и выводит свои аргументы
+** возвращает кол-во напечатаных символов.
 */
 
-t_parser		ft_printf(const char *format, ...)
+int	ft_printf(const char *format, ...)
 {
-	t_parser p;
-	char *str;
-	int count_not_N;
+	t_parser	p;
 
-	va_start(ap, format);
+	p.count = 0;
+	va_start(p.ap, format);
 	while (*format)
 	{
 		if (*format != '%')
-		{
-			write(1, format, 1);
-			++count;
-		}
+			ft_putchar_fd(*format, 1, &p);
 		else
 		{
-			format++;
-			if (*format == '%')
-			{
-				write(1, format, 1);
-				++count;
-			}
+			if (*++format == '%')
+				ft_putchar_fd(*format, 1, &p);
 			else
 			{
-				p = ft_parser((char **)&format);
-				ft_print_parser(p);
-//				count_not_N = ft_count_not_N_in_p(p);
-
+				ft_parser((char **)&format, &p);
+				ft_print_parser(&p);
 			}
 		}
-		format++;
+		++format;
 	}
-	va_end(ap);
-	return (p);
+	va_end(p.ap);
+	return (p.count);
 }
 
 //			if (*format == 'd' || *format == 'i')

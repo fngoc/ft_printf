@@ -1,10 +1,10 @@
 #include "libftprintf.h"
 
 /*
-** ft_parser_dot: парсер точности.
+** ft_parser_type: парсер типа.
 */
 
-void	ft_parser_type(char **str, t_parser *p)
+static void	ft_parser_type(char **str, t_parser *p)
 {
 	if (**str == 'd')
 		(*p).type = 'd';
@@ -30,54 +30,47 @@ void	ft_parser_type(char **str, t_parser *p)
 ** ft_parser_dot: парсер точности.
 */
 
-void	ft_parser_dot(char **str, t_parser *p)
+static void	ft_parser_number_after_dot(char **str, t_parser *p)
 {
 	if (**str == '.')
+		++*str;
+	else
+		return ;
+	if (**str == '*')
 	{
-		(*p).dot = '.';
+		(*p).number_after_dot = '*';
 		++*str;
 	}
-	else
-	{
-		(*p).dot = 'N';
-		(*p).number_after_dot = 'N';
-		return ;
-	}
-	if (**str == '*')
-		(*p).number_after_dot = '*';
 	else if (ft_isdigit(**str))
+	{
 		(*p).number_after_dot = ft_atoi(*str);
-	else
-		(*p).number_after_dot = 'N';
-	++*str;
+		*str = *str + ft_digit_num((*p).number_after_dot);
+	}
 }
 
 /*
 ** ft_parser_width: парсер ширины.
 */
 
-void	ft_parser_width(char **str, t_parser *p)
+static void	ft_parser_width(char **str, t_parser *p)
 {
-	if ((*p).width == '*')
-	{
-		++*str;
-		return ;
-	}
 	if (**str == '*')
+	{
 		(*p).width = '*';
-	if (ft_isdigit(**str))
+		++*str;
+	}
+	else if (ft_isdigit(**str))
+	{
 		(*p).width = ft_atoi(*str);
-	else
-		(*p).width = 'N';
-	if ((*p).width != 'N')
 		*str = *str + ft_digit_num((*p).width);
+	}
 }
 
 /*
 ** ft_parser_flags: парсер флага.
 */
 
-void	ft_parser_flags(char **str, t_parser *p)
+static void	ft_parser_flags(char **str, t_parser *p)
 {
 	if (**str == '-')
 	{
@@ -89,24 +82,17 @@ void	ft_parser_flags(char **str, t_parser *p)
 		(*p).flags = '0';
 		++*str;
 	}
-	else
-		(*p).flags = 'N';
-	if (**str == '*')
-		(*p).width = '*';
 }
 
 /*
 ** ft_parser: парсер строки для печати.
 */
 
-t_parser	ft_parser(char **str)
+void	ft_parser(char **str, t_parser *parser)
 {
-	t_parser p;
-
-	ft_parser_flags(str, &p);
-	ft_parser_width(str, &p);
-	ft_parser_dot(str, &p);
-	ft_parser_type(str, &p);
-
-	return (p);
+	ft_newtparser(parser);
+	ft_parser_flags(str, parser);
+	ft_parser_width(str, parser);
+	ft_parser_number_after_dot(str, parser);
+	ft_parser_type(str, parser);
 }

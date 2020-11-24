@@ -5,14 +5,11 @@
 ** в указанный файл дескриптор coll раз.
 */
 
-void	ft_puttab(int col, int fd)
+void	ft_puttab(int col, int fd, t_parser *p)
 {
 	char tab;
 
 	tab = ' ';
-	while (col != 0)
-	{
-		write(fd, &tab, 1);
-		--col;
-	}
+	while (col-- != 0)
+		ft_putchar_fd(tab, fd, p);
 }

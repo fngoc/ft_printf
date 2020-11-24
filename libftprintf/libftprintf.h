@@ -4,77 +4,52 @@
 # include <unistd.h>
 # include <stdlib.h>
 # include <stdarg.h>
-# include <stdio.h> // Для printf
+# include <stdio.h> /* Для printf */
 
 typedef struct		s_parser
 {
 	unsigned int	flags;
 	unsigned int	width;
-	unsigned int	dot;
 	unsigned int	number_after_dot;
 	unsigned int	type;
+	int				count;
+	va_list			ap;
 }					t_parser;
 
-va_list				ap;
+int					ft_printf(const char *format, ...);
 
-int					count;
+int					ft_print_parser(t_parser *p);
 
-t_parser		ft_printf(const char *format, ...);
+int					ft_isdigit(int c);
 
-void	ft_putnbr_fd(long int n, int fd);
+int					ft_digit_num(long int n);
 
-void	ft_putstr_fd(char *s, int fd);
+int					ft_atoi(const char *str);
 
-size_t	ft_strlen(const char *s);
+int					ft_strlen(const char *s);
 
-void	ft_putchar_fd(char c, int fd);
+void				ft_putchar_fd(char c, int fd, t_parser *p);
 
-void	ft_reverse(char s[]);
+void				ft_parser(char **str, t_parser *parser);
 
-void	ft_print_hex_big(int n);
+void				ft_putchar_fd_mod(char c, int fd, int coll, t_parser *p);
 
-void	ft_print_hex_little(int n);
+void				ft_puttab(int col, int fd, t_parser *p);
 
-void	ft_print_unsigned_int(int a);
+void				ft_putnbr_fd(int n, int fd, t_parser *p);
 
-void	ft_print_adress(void *a);
+void 				ft_newtparser(t_parser *p);
 
-int		ft_atoi(const char *str);
+void				ft_print_d_or_i(t_parser *p);
 
-int		ft_isdigit(int c);
+void				ft_print_c(t_parser *p);
 
-int		dec_in_bin(int num);
+void				ft_print_s(t_parser *p);
 
-void	ft_putstr_fd_print_int_str(char *s, int fd, int f);
+void				ft_chek_width_and_numberafterdot(t_parser *p);
 
-t_parser	ft_parser(char **str);
+void				ft_putstr_fd_mod(char *s, int fd, t_parser *p);
 
-int		ft_count_not_N_in_p(t_parser p);
-
-int		ft_print_parser(t_parser p);
-
-void	two_arg_d(t_parser p);
-
-void		ft_putnbr_fd_mod(long int n, int fd, int coll_tabs);
-
-void	ft_puttab(int col, int fd);
-
-int		ft_digit_num(long int n);
-
-void	two_arg_s(t_parser p);
-
-void	ft_putstr_fd_mod(char *s, int fd, int coll_tabs);
-
-void	two_arg_c(t_parser p);
-
-void	ft_putchar_fd_mod(char c, int fd, int coll_tabs);
-
-void	two_arg_p(t_parser p);
-
-void	ft_print_adress_mod(void *a, int coll_tabs);
-
-void	two_arg_u(t_parser p);
-
-void	ft_print_unsigned_int_mod(int a, int coll_tabs);
+void				ft_putstr_fd_mod_col(char *s, int fd, t_parser *p, int col);
 
 #endif
