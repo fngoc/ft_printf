@@ -94,7 +94,7 @@ static void	ft_parser_flags(char **str, t_parser *p)
 }
 
 /*
-** ft_parser: парсер флагов, ширины, строки,.
+** ft_parser: парсер флагов, ширины, строки и типа.
 */
 
 void	ft_parser(char **str, t_parser *parser)
