@@ -22,6 +22,8 @@ static void	ft_parser_type(char **str, t_parser *p)
 		(*p).type = 'x';
 	else if (**str == 'X')
 		(*p).type = 'X';
+	else if (**str == '%')
+		(*p).type = '%';
 	else
 		(*p).type = 'N';
 }
@@ -33,7 +35,10 @@ static void	ft_parser_type(char **str, t_parser *p)
 static void	ft_parser_number_after_dot(char **str, t_parser *p)
 {
 	if (**str == '.')
+	{
+		(*p).dot = '.';
 		++*str;
+	}
 	else
 		return ;
 	if (**str == '*')
@@ -72,20 +77,24 @@ static void	ft_parser_width(char **str, t_parser *p)
 
 static void	ft_parser_flags(char **str, t_parser *p)
 {
-	if (**str == '-')
+	int flag;
+
+	flag = 0;
+	while (**str == '0' || **str == '-')
 	{
-		(*p).flags = '-';
-		++*str;
-	}
-	else if (**str == '0')
-	{
-		(*p).flags = '0';
+		if (**str == '-')
+		{
+			flag = 1;
+			(*p).flags = '-';
+		}
+		if (**str == '0' && !flag)
+			(*p).flags = '0';
 		++*str;
 	}
 }
 
 /*
-** ft_parser: парсер строки для печати.
+** ft_parser: парсер флагов, ширины, строки,.
 */
 
 void	ft_parser(char **str, t_parser *parser)

@@ -9,8 +9,9 @@
 typedef struct		s_parser
 {
 	unsigned int	flags;
-	unsigned int	width;
-	unsigned int	number_after_dot;
+	int				width;
+	unsigned int	dot;
+	int				number_after_dot;
 	unsigned int	type;
 	int				count;
 	va_list			ap;
@@ -51,5 +52,9 @@ void				ft_chek_width_and_numberafterdot(t_parser *p);
 void				ft_putstr_fd_mod(char *s, int fd, t_parser *p);
 
 void				ft_putstr_fd_mod_col(char *s, int fd, t_parser *p, int col);
+
+void				ft_ifnumnul(t_parser *p, int number);
+
+void				ft_print_percent(t_parser *p);
 
 #endif
