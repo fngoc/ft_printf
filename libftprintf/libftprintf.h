@@ -13,8 +13,11 @@ typedef struct		s_parser
 	unsigned int	dot;
 	int				number_after_dot;
 	unsigned int	type;
+
 	int				count;
 	va_list			ap;
+
+	char			chek;
 }					t_parser;
 
 int					ft_printf(const char *format, ...);

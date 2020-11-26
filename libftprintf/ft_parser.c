@@ -38,19 +38,23 @@ static void	ft_parser_number_after_dot(char **str, t_parser *p)
 	{
 		(*p).dot = '.';
 		++*str;
+		while (p->number_after_dot == '0' ||
+			   ft_isdigit(**str) || **str == '*')
+		{
+			if (**str == '*')
+			{
+				(*p).number_after_dot = '*';
+				++*str;
+			}
+			else if (ft_isdigit(**str))
+			{
+				(*p).number_after_dot = ft_atoi(*str);
+				*str = *str + ft_digit_num((*p).number_after_dot);
+			}
+		}
 	}
 	else
 		return ;
-	if (**str == '*')
-	{
-		(*p).number_after_dot = '*';
-		++*str;
-	}
-	else if (ft_isdigit(**str))
-	{
-		(*p).number_after_dot = ft_atoi(*str);
-		*str = *str + ft_digit_num((*p).number_after_dot);
-	}
 }
 
 /*
@@ -94,7 +98,7 @@ static void	ft_parser_flags(char **str, t_parser *p)
 }
 
 /*
-** ft_parser: парсер флагов, ширины, строки,.
+** ft_parser: парсер флагов, ширины, строки и типа.
 */
 
 void	ft_parser(char **str, t_parser *parser)
