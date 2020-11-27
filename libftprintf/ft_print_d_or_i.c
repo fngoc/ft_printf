@@ -84,6 +84,12 @@ static void ft_print_d_or_i_one(t_parser *p, int number, int digit_num)
 			ft_putnbr_fd((number < 0) ? -number : number, 1, p);
 			ft_putchar_fd_mod(' ', 1, p->width - digit_num - 1, p);
 		}
+//		if (p->number_after_dot > p->width)
+//		{
+//			ft_putchar_fd_mod('0', 1, p->number_after_dot - digit_num, p);
+//			ft_putnbr_fd((number < 0) ? -number : number, 1, p);
+//			return ;
+//		}
 		else
 		{
 			ft_putnbr_fd((number < 0) ? -number : number, 1, p);
@@ -143,6 +149,11 @@ void ft_print_d_or_i(t_parser *p)
 	ft_chek_width_and_numberafterdot(p);
 	number = va_arg(p->ap, int);
 	digit_num = (number < 0) ? ft_digit_num(number) - 1 : ft_digit_num(number);
+	if (p->chek == 'Y')
+	{
+		ft_putnbr_fd(number, 1, p);
+		return ;
+	}
 	if (number == 0 && p->dot == '.' && p->width == 0 && p->number_after_dot == 0)
 		return ;
 	if (number == 0 && p->dot == '.' && p->width != 0 && p->number_after_dot == 0)

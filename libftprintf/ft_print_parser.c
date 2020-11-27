@@ -15,5 +15,9 @@ int	ft_print_parser(t_parser *p)
 		ft_print_c(p);
 	if (p->type == 's')
 		ft_print_s(p);
+	if (p->type == 'p')
+		ft_print_p(p);
+	if (p->type == 'x')
+		ft_print_x(p);
 	return (0);
 }

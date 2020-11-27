@@ -60,4 +60,8 @@ void				ft_ifnumnul(t_parser *p, int number);
 
 void				ft_print_percent(t_parser *p);
 
+void				ft_print_p(t_parser *p);
+
+void				ft_print_x(t_parser *p);
+
 #endif

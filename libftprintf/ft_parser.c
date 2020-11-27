@@ -38,6 +38,8 @@ static void	ft_parser_number_after_dot(char **str, t_parser *p)
 	{
 		(*p).dot = '.';
 		++*str;
+		while (**str == '.')
+			++*str;
 		while (p->number_after_dot == '0' ||
 			   ft_isdigit(**str) || **str == '*')
 		{
