@@ -29,10 +29,10 @@ static void	ft_parser_type(char **str, t_parser *p)
 }
 
 /*
-** ft_parser_dot: парсер точности.
+** ft_parser_accuracy: парсер точности.
 */
 
-static void	ft_parser_number_after_dot(char **str, t_parser *p)
+static void	ft_parser_accuracy(char **str, t_parser *p)
 {
 	if (**str == '.')
 	{
@@ -40,18 +40,18 @@ static void	ft_parser_number_after_dot(char **str, t_parser *p)
 		++*str;
 		while (**str == '.')
 			++*str;
-		while (p->number_after_dot == '0' ||
+		while (p->accuracy == '0' ||
 			   ft_isdigit(**str) || **str == '*')
 		{
 			if (**str == '*')
 			{
-				(*p).number_after_dot = '*';
+				(*p).accuracy = '*';
 				++*str;
 			}
 			else if (ft_isdigit(**str))
 			{
-				(*p).number_after_dot = ft_atoi(*str);
-				*str = *str + ft_digit_num((*p).number_after_dot);
+				(*p).accuracy = ft_atoi(*str);
+				*str = *str + ft_digit_num((*p).accuracy);
 			}
 		}
 	}
@@ -108,6 +108,6 @@ void	ft_parser(char **str, t_parser *parser)
 	ft_newtparser(parser);
 	ft_parser_flags(str, parser);
 	ft_parser_width(str, parser);
-	ft_parser_number_after_dot(str, parser);
+	ft_parser_accuracy(str, parser);
 	ft_parser_type(str, parser);
 }

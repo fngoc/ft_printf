@@ -39,7 +39,7 @@ void ft_print_percent(t_parser *p)
 	char ch;
 
 	ch = '%';
-	ft_chek_width_and_numberafterdot(p);
+	ft_chek_width_and_accuracy(p);
 	if (p->flags == '-')
 	{
 		fr_print_percent_one(p, ch);

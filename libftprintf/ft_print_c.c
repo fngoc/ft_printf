@@ -38,7 +38,7 @@ void ft_print_c(t_parser *p)
 {
 	char ch;
 
-	ft_chek_width_and_numberafterdot(p);
+	ft_chek_width_and_accuracy(p);
 	ch = va_arg(p->ap, int);
 	if (p->flags == '-')
 	{

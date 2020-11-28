@@ -23,7 +23,7 @@ int	ft_printf(const char *format, ...)
 			{
 				ft_parser((char **)&format, &p);
 				ft_print_parser(&p);
-//				printf("Parser:\n%c\n%d\n%d\n%c\n", p.flags, p.width, p.number_after_dot, p.type);
+//				printf("Parser:\n%c\n%d\n%d\n%c\n", p.flags, p.width, p.accuracy, p.type);
 			}
 		}
 		++format;

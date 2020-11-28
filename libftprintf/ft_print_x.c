@@ -55,7 +55,7 @@ void ft_print_x(t_parser *p)
 {
 	int number;
 
-	ft_chek_width_and_numberafterdot(p);
+	ft_chek_width_and_accuracy(p);
 	number = va_arg(p->ap, int);
 	ft_print_hex_little(number, p);
 }

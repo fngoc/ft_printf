@@ -8,8 +8,8 @@
 void ft_newtparser(t_parser *p)
 {
 	p->flags = 'N';
-	p->width = 0;
+	p->width = -1;
 	p->dot = 'N';
-	p->number_after_dot = 0;
+	p->accuracy = -1;
 	p->type = 'N';
 }

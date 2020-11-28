@@ -13,7 +13,7 @@ static void fr_print_s_four(t_parser *p, char *str)
 	}
 	if (p->width > ft_strlen(str))
 	{
-		if (p->width > ft_strlen(str) && p->number_after_dot == 0)
+		if (p->width > ft_strlen(str) && p->accuracy == 0)
 		{
 			ft_putchar_fd_mod(' ', 1, p->width, p);
 			return ;
@@ -65,16 +65,16 @@ static void fr_print_s_two(t_parser *p, char *str)
 {
 	if (p->flags == '-')
 	{
-		if (p->width > ft_strlen(str) && p->dot == '.' && p->number_after_dot > ft_strlen(str))
+		if (p->width > ft_strlen(str) && p->dot == '.' && p->accuracy > ft_strlen(str))
 		{
-			ft_putstr_fd_mod_col(str, 1, p, p->number_after_dot);
+			ft_putstr_fd_mod_col(str, 1, p, p->accuracy);
 			ft_puttab(p->width - ft_strlen(str), 1, p);
 			return ;
 		}
 		if (p->width > ft_strlen(str) && p->dot == '.')
 		{
-			ft_putstr_fd_mod_col(str, 1, p, p->number_after_dot);
-			ft_puttab(p->width - p->number_after_dot, 1, p);
+			ft_putstr_fd_mod_col(str, 1, p, p->accuracy);
+			ft_puttab(p->width - p->accuracy, 1, p);
 			return ;
 		}
 		if (p->width > ft_strlen(str))
@@ -83,24 +83,24 @@ static void fr_print_s_two(t_parser *p, char *str)
 			ft_puttab(p->width - ft_strlen(str), 1, p);
 			return ;
 		}
-		ft_putstr_fd_mod_col(str, 1, p, p->number_after_dot);
-		ft_puttab(p->width - p->number_after_dot, 1, p);
+		ft_putstr_fd_mod_col(str, 1, p, p->accuracy);
+		ft_puttab(p->width - p->accuracy, 1, p);
 		return ;
 	}
 	if (p->flags == '0')
 	{
-		ft_putchar_fd_mod('0', 1, p->width - p->number_after_dot, p);
-		ft_putstr_fd_mod_col(str, 1, p, p->number_after_dot);
+		ft_putchar_fd_mod('0', 1, p->width - p->accuracy, p);
+		ft_putstr_fd_mod_col(str, 1, p, p->accuracy);
 		return ;
 	}
-	if (p->width > ft_strlen(str) && p->number_after_dot > ft_strlen(str))
+	if (p->width > ft_strlen(str) && p->accuracy > ft_strlen(str))
 	{
 		ft_puttab(p->width - ft_strlen(str), 1, p);
 		ft_putstr_fd_mod(str, 1, p);
 		return ;
 	}
-	ft_puttab(p->width - p->number_after_dot, 1, p);
-	ft_putstr_fd_mod_col(str, 1, p, p->number_after_dot);
+	ft_puttab(p->width - p->accuracy, 1, p);
+	ft_putstr_fd_mod_col(str, 1, p, p->accuracy);
 }
 
 /*
@@ -112,14 +112,14 @@ static void fr_print_s_one(t_parser *p, char *str)
 	if (ft_strlen(str) == 0)
 	{
 		ft_putchar_fd_mod(' ', 1, p->width, p);
-		ft_putstr_fd_mod_col(str, 1, p, p->number_after_dot);
+		ft_putstr_fd_mod_col(str, 1, p, p->accuracy);
 		return ;
 	}
 	if ((p->flags == '-' || p->flags == '0')
-		&& (ft_strlen(str) < p->number_after_dot))
+		&& (ft_strlen(str) < p->accuracy))
 		ft_putstr_fd_mod(str, 1, p);
 	else
-		ft_putstr_fd_mod_col(str, 1, p, p->number_after_dot);
+		ft_putstr_fd_mod_col(str, 1, p, p->accuracy);
 }
 
 /*
@@ -161,35 +161,35 @@ void	ft_print_s(t_parser *p)
 {
 	char	*str;
 
-	ft_chek_width_and_numberafterdot(p);
+	ft_chek_width_and_accuracy(p);
 	str = va_arg(p->ap, char *);
 	if (!str)
 		str = "(null)";
 	if (p->chek == 'Y')
 		ft_putstr_fd_mod(str, 1, p);
-	if (p->width == 0 && p->number_after_dot == 0 && p->dot == '.')
+	if (p->width == 0 && p->accuracy == 0 && p->dot == '.')
 		return ;
-	if (p->width != 0 && p->number_after_dot == 0 && p->dot == '.')
+	if (p->width != 0 && p->accuracy == 0 && p->dot == '.')
 	{
 		fr_print_s_four(p, str);
 		return ;
 	}
-	if (p->number_after_dot == 0)
+	if (p->accuracy == 0)
 	{;
 		fr_print_s_three(p, str);
 		return ;
 	}
-	if (p->width > p->number_after_dot)
+	if (p->width > p->accuracy)
 	{
 		fr_print_s_two(p, str);
 		return ;
 	}
-	if (p->number_after_dot > p->width)
+	if (p->accuracy > p->width)
 	{
 		fr_print_s_one(p, str);
 		return ;
 	}
-	if (p->width == p->number_after_dot)
+	if (p->width == p->accuracy)
 	{
 		fr_print_s_zero(p, str);
 		return ;
