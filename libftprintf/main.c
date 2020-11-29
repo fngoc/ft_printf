@@ -26,12 +26,12 @@ int		main(void)
 //	ft_printf("-------------------------------------\n");
 //	ft_printf("---------------d and i---------------\n");
 //	ft_printf("-------------------------------------\n");
-	int result_pf;
-	int result_my;
-	result_pf = printf("pf: %%5d = |%3.5d|\n", -424242);
-	result_my = ft_printf("my: %%5d = |%3.5d|\n", -424242);
-	ft_printf("len pf: %d\n", result_pf);
-	ft_printf("len my: %d\n", result_my);
+	int res_pf;
+	int res_my;
+	res_pf = printf("pf: |%.0d|\n",0);
+	res_my = ft_printf("my: |%.0d|\n",0);
+	ft_printf("len pf: %d\n", res_pf);
+	ft_printf("len my: %d\n", res_my);
 //	ft_printf("-------------------------------------\n");
 //	result_pf = printf("pf: %%d_neg = |%d|\n", -42);
 //	result_my = ft_printf("my: %%d_neg = |%d|\n", -42);

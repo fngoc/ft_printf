@@ -6,28 +6,184 @@
 
 static void ft_print_d_or_i_three(t_parser *p, int number, int digit_num)
 {
-	if (p->accuracy > p->width)
-	{
-		if (p->accuracy > digit_num)
-		{
-			if (number < 0)
-				ft_putchar_fd('-', 1, p);
-			ft_putchar_fd_mod('0', 1, p->accuracy - digit_num , p);
-			ft_putnbr_fd((number < 0) ? -number : number, 1, p);
-		}
-		else
-		{
-			if (number < 0)
-				ft_putchar_fd('-', 1, p);
-			ft_putnbr_fd((number < 0) ? -number : number, 1, p);
-		}
-	}
+	if (p->width == -1 && p->accuracy == -1)
+		ft_putnbr_fd(number, 1, p);
 	else if (p->width > p->accuracy)
 	{
-		
+		if (p->width > digit_num && p->accuracy < digit_num)
+		{
+			if (number >= 0)
+			{
+				ft_putchar_fd_mod(' ', 1, p->width - digit_num, p);
+				ft_putnbr_fd((number < 0) ? -number : number, 1, p);
+			}
+			else if (number < 0)
+			{
+				ft_putchar_fd_mod(' ', 1, p->width - digit_num - 1, p);
+				ft_putchar_fd('-', 1, p);
+				ft_putnbr_fd((number < 0) ? -number : number, 1, p);
+			}
+		}
+		else if (p->width > digit_num && p->accuracy > digit_num)
+		{
+			if (number >= 0)
+			{
+				ft_putchar_fd_mod(' ', 1, p->width - p->accuracy, p);
+				ft_putchar_fd_mod('0', 1, p->width - digit_num - (p->width - p->accuracy), p);
+				ft_putnbr_fd((number < 0) ? -number : number, 1, p);
+			}
+			else if (number < 0)
+			{
+				ft_putchar_fd_mod(' ', 1, p->width - p->accuracy - 1, p);
+				ft_putchar_fd('-', 1, p);
+				ft_putchar_fd_mod('0', 1, p->width - digit_num - (p->width - p->accuracy), p);
+				ft_putnbr_fd((number < 0) ? -number : number, 1, p);
+			}
+		}
+		else if (p->width < digit_num)
+		{
+			if (number >= 0)
+				ft_putnbr_fd((number < 0) ? -number : number, 1, p);
+			else if (number < 0)
+			{
+				ft_putchar_fd('-', 1, p);
+				ft_putnbr_fd((number < 0) ? -number : number, 1, p);
+			}
+		}
+		else if ((p->width == digit_num) && (p->accuracy < digit_num))
+		{
+			if (number >= 0)
+			{
+				ft_putnbr_fd((number < 0) ? -number : number, 1, p);
+			}
+			else if (number < 0)
+			{
+				ft_putchar_fd('-', 1, p);
+				ft_putnbr_fd((number < 0) ? -number : number, 1, p);
+			}
+		}
+		else if (p->accuracy == digit_num)
+		{
+			if (number >= 0)
+			{
+				ft_putchar_fd_mod(' ', 1, p->width - digit_num, p);
+				ft_putnbr_fd((number < 0) ? -number : number, 1, p);
+			}
+			else if (number < 0)
+			{
+				ft_putchar_fd_mod(' ', 1, p->width - p->accuracy - 1, p);
+				ft_putchar_fd('-', 1, p);
+				ft_putnbr_fd((number < 0) ? -number : number, 1, p);
+			}
+		}
 	}
-	else
-		ft_putnbr_fd((number < 0) ? -number : number, 1, p);
+	else if (p->accuracy > p->width)
+	{
+		if (p->accuracy > digit_num && p->width < digit_num)
+		{
+			if (number >= 0)
+			{
+				ft_putchar_fd_mod('0', 1, p->accuracy - digit_num, p);
+				ft_putnbr_fd((number < 0) ? -number : number, 1, p);
+			}
+			else if (number < 0)
+			{
+				ft_putchar_fd('-', 1, p);
+				ft_putchar_fd_mod('0', 1, p->accuracy - digit_num, p);
+				ft_putnbr_fd((number < 0) ? -number : number, 1, p);
+			}
+		}
+		else if (p->accuracy > digit_num && p->width > digit_num)
+		{
+			if (number >= 0)
+			{
+				ft_putchar_fd_mod('0', 1, p->accuracy - digit_num, p);
+				ft_putnbr_fd((number < 0) ? -number : number, 1, p);
+			}
+			else if (number < 0)
+			{
+				ft_putchar_fd('-', 1, p);
+				ft_putchar_fd_mod('0', 1, p->accuracy - digit_num, p);
+				ft_putnbr_fd((number < 0) ? -number : number, 1, p);
+			}
+		}
+		else if (p->accuracy < digit_num)
+		{
+			if (number >= 0)
+			{
+				ft_putnbr_fd((number < 0) ? -number : number, 1, p);
+			}
+			else if (number < 0)
+			{
+				ft_putchar_fd('-', 1, p);
+				ft_putnbr_fd((number < 0) ? -number : number, 1, p);
+			}
+		}
+		else if ((p->accuracy == digit_num) && (p->width < digit_num))
+		{
+			if (number >= 0)
+			{
+				ft_putnbr_fd((number < 0) ? -number : number, 1, p);
+			}
+			else if (number < 0)
+			{
+				ft_putchar_fd('-', 1, p);
+				ft_putnbr_fd((number < 0) ? -number : number, 1, p);
+			}
+		}
+		else if (p->width == digit_num)
+		{
+			if (number >= 0)
+			{
+				ft_putchar_fd_mod('0', 1, p->accuracy - digit_num, p);
+				ft_putnbr_fd((number < 0) ? -number : number, 1, p);
+			}
+			else if (number < 0)
+			{
+				ft_putchar_fd('-', 1, p);
+				ft_putchar_fd_mod('0', 1, p->accuracy - digit_num, p);
+				ft_putnbr_fd((number < 0) ? -number : number, 1, p);
+			}
+		}
+	}
+	else if ((p->width == p->accuracy) && (p->width < digit_num) && (p->accuracy < digit_num))
+	{
+		if (number >= 0)
+		{
+			ft_putnbr_fd((number < 0) ? -number : number, 1, p);
+		}
+		else if (number < 0)
+		{
+			ft_putchar_fd('-', 1, p);
+			ft_putnbr_fd((number < 0) ? -number : number, 1, p);
+		}
+	}
+	else if ((p->width == p->accuracy) && (p->width > digit_num) && (p->accuracy > digit_num))
+	{
+		if (number >= 0)
+		{
+			ft_putchar_fd_mod('0', 1, p->accuracy - digit_num, p);
+			ft_putnbr_fd((number < 0) ? -number : number, 1, p);
+		}
+		else if (number < 0)
+		{
+			ft_putchar_fd('-', 1, p);
+			ft_putchar_fd_mod('0', 1, p->accuracy - digit_num, p);
+			ft_putnbr_fd((number < 0) ? -number : number, 1, p);
+		}
+	}
+	else if ((p->width == p->accuracy) && (p->width == digit_num) && (p->accuracy == digit_num))
+	{
+		if (number >= 0)
+		{
+			ft_putnbr_fd((number < 0) ? -number : number, 1, p);
+		}
+		else if (number < 0)
+		{
+			ft_putchar_fd('-', 1, p);
+			ft_putnbr_fd((number < 0) ? -number : number, 1, p);
+		}
+	}
 }
 
 /*
@@ -36,7 +192,203 @@ static void ft_print_d_or_i_three(t_parser *p, int number, int digit_num)
 
 static void ft_print_d_or_i_two(t_parser *p, int number, int digit_num)
 {
-	
+	if (p->width == -1 && p->accuracy == -1)
+		ft_putnbr_fd(number, 1, p);
+	else if (p->dot != '.')
+	{
+		if (number >= 0)
+		{
+			ft_putchar_fd_mod('0', 1, p->width - digit_num, p);
+			ft_putnbr_fd((number < 0) ? -number : number, 1, p);
+		}
+		else if (number < 0)
+		{
+			ft_putchar_fd('-', 1, p);
+			if (digit_num >= p->width)
+				ft_putnbr_fd((number < 0) ? -number : number, 1, p);
+			else
+			{
+				ft_putchar_fd_mod('0', 1, p->width - digit_num - 1, p);
+				ft_putnbr_fd((number < 0) ? -number : number, 1, p);
+			}
+		}
+	}
+	else if (p->width > p->accuracy)
+	{
+		if (p->width > digit_num && p->accuracy < digit_num)
+		{
+			if (number >= 0)
+			{
+				ft_putchar_fd_mod(' ', 1, p->width - digit_num, p);
+				ft_putnbr_fd((number < 0) ? -number : number, 1, p);
+			}
+			else if (number < 0)
+			{
+				ft_putchar_fd_mod(' ', 1, p->width - digit_num - 1, p);
+				ft_putchar_fd('-', 1, p);
+				ft_putnbr_fd((number < 0) ? -number : number, 1, p);
+			}
+		}
+		else if (p->width > digit_num && p->accuracy > digit_num)
+		{
+			if (number >= 0)
+			{
+				ft_putchar_fd_mod(' ', 1, p->width - p->accuracy, p);
+				ft_putchar_fd_mod('0', 1, p->width - digit_num - (p->width - p->accuracy), p);
+				ft_putnbr_fd((number < 0) ? -number : number, 1, p);
+			}
+			else if (number < 0)
+			{
+				ft_putchar_fd_mod(' ', 1, p->width - p->accuracy - 1, p);
+				ft_putchar_fd('-', 1, p);
+				ft_putchar_fd_mod('0', 1, p->width - digit_num - (p->width - p->accuracy), p);
+				ft_putnbr_fd((number < 0) ? -number : number, 1, p);
+			}
+		}
+		else if (p->width < digit_num)
+		{
+			if (number >= 0)
+				ft_putnbr_fd((number < 0) ? -number : number, 1, p);
+			else if (number < 0)
+			{
+				ft_putchar_fd('-', 1, p);
+				ft_putnbr_fd((number < 0) ? -number : number, 1, p);
+			}
+		}
+		else if ((p->width == digit_num) && (p->accuracy < digit_num))
+		{
+			if (number >= 0)
+			{
+				ft_putnbr_fd((number < 0) ? -number : number, 1, p);
+			}
+			else if (number < 0)
+			{
+				ft_putchar_fd('-', 1, p);
+				ft_putnbr_fd((number < 0) ? -number : number, 1, p);
+			}
+		}
+		else if (p->accuracy == digit_num)
+		{
+			if (number >= 0)
+			{
+				ft_putchar_fd_mod(' ', 1, p->width - digit_num, p);
+				ft_putnbr_fd((number < 0) ? -number : number, 1, p);
+			}
+			else if (number < 0)
+			{
+				ft_putchar_fd_mod(' ', 1, p->width - p->accuracy - 1, p);
+				ft_putchar_fd('-', 1, p);
+				ft_putnbr_fd((number < 0) ? -number : number, 1, p);
+			}
+		}
+	}
+	else if (p->accuracy > p->width)
+	{
+		if (p->accuracy > digit_num && p->width < digit_num)
+		{
+			if (number >= 0)
+			{
+				ft_putchar_fd_mod('0', 1, p->accuracy - digit_num, p);
+				ft_putnbr_fd((number < 0) ? -number : number, 1, p);
+			}
+			else if (number < 0)
+			{
+				ft_putchar_fd('-', 1, p);
+				ft_putchar_fd_mod('0', 1, p->accuracy - digit_num, p);
+				ft_putnbr_fd((number < 0) ? -number : number, 1, p);
+			}
+		}
+		else if (p->accuracy > digit_num && p->width > digit_num)
+		{
+			if (number >= 0)
+			{
+				ft_putchar_fd_mod('0', 1, p->accuracy - digit_num, p);
+				ft_putnbr_fd((number < 0) ? -number : number, 1, p);
+			}
+			else if (number < 0)
+			{
+				ft_putchar_fd('-', 1, p);
+				ft_putchar_fd_mod('0', 1, p->accuracy - digit_num, p);
+				ft_putnbr_fd((number < 0) ? -number : number, 1, p);
+			}
+		}
+		else if (p->accuracy < digit_num)
+		{
+			if (number >= 0)
+			{
+				ft_putnbr_fd((number < 0) ? -number : number, 1, p);
+			}
+			else if (number < 0)
+			{
+				ft_putchar_fd('-', 1, p);
+				ft_putnbr_fd((number < 0) ? -number : number, 1, p);
+			}
+		}
+		else if ((p->accuracy == digit_num) && (p->width < digit_num))
+		{
+			if (number >= 0)
+			{
+				ft_putnbr_fd((number < 0) ? -number : number, 1, p);
+			}
+			else if (number < 0)
+			{
+				ft_putchar_fd('-', 1, p);
+				ft_putnbr_fd((number < 0) ? -number : number, 1, p);
+			}
+		}
+		else if (p->width == digit_num)
+		{
+			if (number >= 0)
+			{
+				ft_putchar_fd_mod('0', 1, p->accuracy - digit_num, p);
+				ft_putnbr_fd((number < 0) ? -number : number, 1, p);
+			}
+			else if (number < 0)
+			{
+				ft_putchar_fd('-', 1, p);
+				ft_putchar_fd_mod('0', 1, p->accuracy - digit_num, p);
+				ft_putnbr_fd((number < 0) ? -number : number, 1, p);
+			}
+		}
+	}
+	else if ((p->width == p->accuracy) && (p->width < digit_num) && (p->accuracy < digit_num))
+	{
+		if (number >= 0)
+		{
+			ft_putnbr_fd((number < 0) ? -number : number, 1, p);
+		}
+		else if (number < 0)
+		{
+			ft_putchar_fd('-', 1, p);
+			ft_putnbr_fd((number < 0) ? -number : number, 1, p);
+		}
+	}
+	else if ((p->width == p->accuracy) && (p->width > digit_num) && (p->accuracy > digit_num))
+	{
+		if (number >= 0)
+		{
+			ft_putchar_fd_mod('0', 1, p->accuracy - digit_num, p);
+			ft_putnbr_fd((number < 0) ? -number : number, 1, p);
+		}
+		else if (number < 0)
+		{
+			ft_putchar_fd('-', 1, p);
+			ft_putchar_fd_mod('0', 1, p->accuracy - digit_num, p);
+			ft_putnbr_fd((number < 0) ? -number : number, 1, p);
+		}
+	}
+	else if ((p->width == p->accuracy) && (p->width == digit_num) && (p->accuracy == digit_num))
+	{
+		if (number >= 0)
+		{
+			ft_putnbr_fd((number < 0) ? -number : number, 1, p);
+		}
+		else if (number < 0)
+		{
+			ft_putchar_fd('-', 1, p);
+			ft_putnbr_fd((number < 0) ? -number : number, 1, p);
+		}
+	}
 }
 
 /*
@@ -45,7 +397,185 @@ static void ft_print_d_or_i_two(t_parser *p, int number, int digit_num)
 
 static void ft_print_d_or_i_one(t_parser *p, int number, int digit_num)
 {
-	
+	if (p->width == -1 && p->accuracy == -1)
+		ft_putnbr_fd(number, 1, p);
+	else if (p->width > p->accuracy)
+	{
+		if (p->width > digit_num && p->accuracy < digit_num)
+		{
+			if (number >= 0)
+			{
+				ft_putnbr_fd((number < 0) ? -number : number, 1, p);
+				ft_putchar_fd_mod(' ', 1, p->width - digit_num, p);
+			}
+			else if (number < 0)
+			{
+				ft_putchar_fd('-', 1, p);
+				ft_putnbr_fd((number < 0) ? -number : number, 1, p);
+				ft_putchar_fd_mod(' ', 1, p->width - digit_num - 1, p);
+				
+			}
+		}
+		else if (p->width > digit_num && p->accuracy > digit_num)
+		{
+			if (number >= 0)
+			{
+				ft_putchar_fd_mod('0', 1, p->width - digit_num - (p->width - p->accuracy), p);
+				ft_putnbr_fd((number < 0) ? -number : number, 1, p);
+				ft_putchar_fd_mod(' ', 1, p->width - p->accuracy, p);
+			}
+			else if (number < 0)
+			{
+				ft_putchar_fd('-', 1, p);
+				ft_putchar_fd_mod('0', 1, p->width - digit_num - (p->width - p->accuracy), p);
+				ft_putnbr_fd((number < 0) ? -number : number, 1, p);
+				ft_putchar_fd_mod(' ', 1, p->width - p->accuracy - 1, p);
+			}
+		}
+		else if (p->width < digit_num)
+		{
+			if (number >= 0)
+				ft_putnbr_fd((number < 0) ? -number : number, 1, p);
+			else if (number < 0)
+			{
+				ft_putchar_fd('-', 1, p);
+				ft_putnbr_fd((number < 0) ? -number : number, 1, p);
+			}
+		}
+		else if ((p->width == digit_num) && (p->accuracy < digit_num))
+		{
+			if (number >= 0)
+			{
+				ft_putnbr_fd((number < 0) ? -number : number, 1, p);
+			}
+			else if (number < 0)
+			{
+				ft_putchar_fd('-', 1, p);
+				ft_putnbr_fd((number < 0) ? -number : number, 1, p);
+			}
+		}
+		else if (p->accuracy == digit_num)
+		{
+			if (number >= 0)
+			{
+				ft_putnbr_fd((number < 0) ? -number : number, 1, p);
+				ft_putchar_fd_mod(' ', 1, p->width - digit_num, p);
+			}
+			else if (number < 0)
+			{
+				ft_putchar_fd('-', 1, p);
+				ft_putnbr_fd((number < 0) ? -number : number, 1, p);
+				ft_putchar_fd_mod(' ', 1, p->width - p->accuracy - 1, p);
+			}
+		}
+	}
+	else if (p->accuracy > p->width)
+	{
+		if (p->accuracy > digit_num && p->width < digit_num)
+		{
+			if (number >= 0)
+			{
+				ft_putchar_fd_mod('0', 1, p->accuracy - digit_num, p);
+				ft_putnbr_fd((number < 0) ? -number : number, 1, p);
+			}
+			else if (number < 0)
+			{
+				ft_putchar_fd('-', 1, p);
+				ft_putchar_fd_mod('0', 1, p->accuracy - digit_num, p);
+				ft_putnbr_fd((number < 0) ? -number : number, 1, p);
+			}
+		}
+		else if (p->accuracy > digit_num && p->width > digit_num)
+		{
+			if (number >= 0)
+			{
+				ft_putchar_fd_mod('0', 1, p->accuracy - digit_num, p);
+				ft_putnbr_fd((number < 0) ? -number : number, 1, p);
+			}
+			else if (number < 0)
+			{
+				ft_putchar_fd('-', 1, p);
+				ft_putchar_fd_mod('0', 1, p->accuracy - digit_num, p);
+				ft_putnbr_fd((number < 0) ? -number : number, 1, p);
+			}
+		}
+		else if (p->accuracy < digit_num)
+		{
+			if (number >= 0)
+			{
+				ft_putnbr_fd((number < 0) ? -number : number, 1, p);
+			}
+			else if (number < 0)
+			{
+				ft_putchar_fd('-', 1, p);
+				ft_putnbr_fd((number < 0) ? -number : number, 1, p);
+			}
+		}
+		else if ((p->accuracy == digit_num) && (p->width < digit_num))
+		{
+			if (number >= 0)
+			{
+				ft_putnbr_fd((number < 0) ? -number : number, 1, p);
+			}
+			else if (number < 0)
+			{
+				ft_putchar_fd('-', 1, p);
+				ft_putnbr_fd((number < 0) ? -number : number, 1, p);
+			}
+		}
+		else if (p->width == digit_num)
+		{
+			if (number >= 0)
+			{
+				ft_putchar_fd_mod('0', 1, p->accuracy - digit_num, p);
+				ft_putnbr_fd((number < 0) ? -number : number, 1, p);
+			}
+			else if (number < 0)
+			{
+				ft_putchar_fd('-', 1, p);
+				ft_putchar_fd_mod('0', 1, p->accuracy - digit_num, p);
+				ft_putnbr_fd((number < 0) ? -number : number, 1, p);
+			}
+		}
+	}
+	else if ((p->width == p->accuracy) && (p->width < digit_num) && (p->accuracy < digit_num))
+	{
+		if (number >= 0)
+		{
+			ft_putnbr_fd((number < 0) ? -number : number, 1, p);
+		}
+		else if (number < 0)
+		{
+			ft_putchar_fd('-', 1, p);
+			ft_putnbr_fd((number < 0) ? -number : number, 1, p);
+		}
+	}
+	else if ((p->width == p->accuracy) && (p->width > digit_num) && (p->accuracy > digit_num))
+	{
+		if (number >= 0)
+		{
+			ft_putchar_fd_mod('0', 1, p->accuracy - digit_num, p);
+			ft_putnbr_fd((number < 0) ? -number : number, 1, p);
+		}
+		else if (number < 0)
+		{
+			ft_putchar_fd('-', 1, p);
+			ft_putchar_fd_mod('0', 1, p->accuracy - digit_num, p);
+			ft_putnbr_fd((number < 0) ? -number : number, 1, p);
+		}
+	}
+	else if ((p->width == p->accuracy) && (p->width == digit_num) && (p->accuracy == digit_num))
+	{
+		if (number >= 0)
+		{
+			ft_putnbr_fd((number < 0) ? -number : number, 1, p);
+		}
+		else if (number < 0)
+		{
+			ft_putchar_fd('-', 1, p);
+			ft_putnbr_fd((number < 0) ? -number : number, 1, p);
+		}
+	}
 }
 
 /*
