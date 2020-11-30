@@ -31,6 +31,8 @@ static void fr_print_s_four(t_parser *p, char *str)
 
 static void fr_print_s_three(t_parser *p, char *str)
 {
+	if (p->check_for_str == 'Y')
+		return ;
 	if ((p->flags == '-' || p->flags == '0') && (ft_strlen(str) > p->width))
 	{
 		ft_putstr_fd_mod(str, 1, p);
@@ -161,11 +163,11 @@ void	ft_print_s(t_parser *p)
 {
 	char	*str;
 
-	ft_chek_width_and_accuracy(p);
+	ft_check(p);
 	str = va_arg(p->ap, char *);
 	if (!str)
 		str = "(null)";
-	if (p->chek == 'Y')
+	if (p->check_for_str == 'Y')
 		ft_putstr_fd_mod(str, 1, p);
 	if (p->width == 0 && p->accuracy == 0 && p->dot == '.')
 		return ;
@@ -175,7 +177,7 @@ void	ft_print_s(t_parser *p)
 		return ;
 	}
 	if (p->accuracy == 0)
-	{;
+	{
 		fr_print_s_three(p, str);
 		return ;
 	}

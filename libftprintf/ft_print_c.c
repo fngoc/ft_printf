@@ -38,14 +38,14 @@ void ft_print_c(t_parser *p)
 {
 	char ch;
 
-	ft_chek_width_and_accuracy(p);
+	ft_check(p);
 	ch = va_arg(p->ap, int);
 	if (p->flags == '-')
 	{
 		fr_print_c_one(p, ch);
 		return ;
 	}
-	if (p->flags == '0')
+	else if (p->flags == '0')
 	{
 		fr_print_c_two(p, ch);
 		return ;

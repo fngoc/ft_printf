@@ -17,7 +17,8 @@ typedef struct		s_parser
 	int				count;
 	va_list			ap;
 
-	char			chek;
+	char			tap;
+	char			check_for_str;
 }					t_parser;
 
 int					ft_printf(const char *format, ...);
@@ -40,7 +41,7 @@ void				ft_putchar_fd_mod(char c, int fd, int coll, t_parser *p);
 
 void				ft_puttab(int col, int fd, t_parser *p);
 
-void				ft_putnbr_fd(int n, int fd, t_parser *p);
+void				ft_putnbr_fd(long int n, int fd, t_parser *p);
 
 void 				ft_newtparser(t_parser *p);
 
@@ -50,7 +51,7 @@ void				ft_print_c(t_parser *p);
 
 void				ft_print_s(t_parser *p);
 
-void				ft_chek_width_and_accuracy(t_parser *p);
+void				ft_check(t_parser *p);
 
 void				ft_putstr_fd_mod(char *s, int fd, t_parser *p);
 
@@ -63,5 +64,7 @@ void				ft_print_percent(t_parser *p);
 void				ft_print_p(t_parser *p);
 
 void				ft_print_x(t_parser *p);
+
+void				ft_process(t_parser *p, int number);
 
 #endif

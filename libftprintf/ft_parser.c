@@ -92,9 +92,13 @@ static void	ft_parser_flags(char **str, t_parser *p)
 		{
 			flag = 1;
 			(*p).flags = '-';
+			(*p).tap = ' ';
 		}
 		if (**str == '0' && !flag)
+		{
 			(*p).flags = '0';
+			(*p).tap = '0';
+		}
 		++*str;
 	}
 }

@@ -116,7 +116,7 @@ static void fr_print_p_one(t_parser *p, void *adress)
 
 static void fr_print_p_zero(t_parser *p)
 {
-	if (p->chek == 'Y')
+	if (p->dot == 'N')
 	{
 		ft_putstr_fd_mod("0x0", 1, p);
 		return ;
@@ -155,7 +155,7 @@ void	ft_print_p(t_parser *p)
 {
 	void *adress;
 
-	ft_chek_width_and_accuracy(p);
+	ft_check(p);
 	adress = va_arg(p->ap, char *);
 	if (!adress)
 	{
@@ -188,7 +188,7 @@ void	ft_print_p(t_parser *p)
 		ft_print_adress(adress, p, 1);
 		return ;
 	}
-	if (p->chek == 'Y')
+	if (p->dot == 'N')
 	{
 		ft_print_adress(adress, p, 1);
 		return ;

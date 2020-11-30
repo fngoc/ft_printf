@@ -12,13 +12,13 @@ static void	print_symbole(long int n, int fd, t_parser *p)
 	ft_putchar_fd((n % 10 + '0'), fd, p);
 }
 
-void		ft_putnbr_fd(int n, int fd, t_parser *p)
+void		ft_putnbr_fd(long int n, int fd, t_parser *p)
 {
 	if (n < 0)
 	{
 		ft_putchar_fd('-', fd, p);
-		print_symbole((long int)n * (-1), fd, p);
+		print_symbole(n * (-1), fd, p);
 	}
 	else
-		print_symbole((long int)n, fd, p);
+		print_symbole(n, fd, p);
 }

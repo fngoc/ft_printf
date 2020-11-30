@@ -1,4 +1,5 @@
 #include "libftprintf.h" /* Моя библиотека */
+#include <limits.h> /* Для INT_MIN */
 
 int		main(void)
 {
@@ -21,17 +22,42 @@ int		main(void)
 //	unsigned long long a10;
 //	char *a11;
 //	void *a12;
+
+//	int res_pf;
+//	int res_my;
+//	res_pf = printf("pf: |%*.2s|\n",-10,"HelloWorld");
+//	res_my = ft_printf("my: |%*.2s|\n",-10,"HelloWorld");
+//	printf("len pf: %d\n", res_pf);
+//	printf("len my: %d\n", res_my);
+//	int		a = -4;
+//	int		b = 0;
+//	char	c = 'a';
+//	int		d = 2147483647;
+//	int		e = -2147483648;
+//	int		f = 42;
+//	int		g = 25;
+//	int		h = 4200;
+//	int		i = 8;
+//	int		j = -12;
+//	int		k = 123456789;
+//	int		l = 0;
+//	int		m = -12345678;
+//	char	*n = "abcdefghijklmnop";
+//	char	*o = "-a";
+//	char	*p = "-12";
+//	char	*q = "0";
+//	char	*r = "%%";
+//	char	*s = "-2147483648";
+//	char	*t = "0x12345678";
+//	char	*u = "-0";
 	
+	printf("|%1.d|\n", 0);
+	ft_printf("|%1.d|\n",0);
+
 	/* МОИ ТЕСТЫ */
 //	ft_printf("-------------------------------------\n");
 //	ft_printf("---------------d and i---------------\n");
 //	ft_printf("-------------------------------------\n");
-	int res_pf;
-	int res_my;
-	res_pf = printf("pf: |%.0d|\n",0);
-	res_my = ft_printf("my: |%.0d|\n",0);
-	ft_printf("len pf: %d\n", res_pf);
-	ft_printf("len my: %d\n", res_my);
 //	ft_printf("-------------------------------------\n");
 //	result_pf = printf("pf: %%d_neg = |%d|\n", -42);
 //	result_my = ft_printf("my: %%d_neg = |%d|\n", -42);
@@ -279,9 +305,7 @@ int		main(void)
 	
 	
 	/* Сделать */
-//	printf("%-4.9d\n", 10);
 //	printf("%-4.9s\n", "0");
-//	ft_printf("%-4.9d\n", 10);
 //	ft_printf("%-4.9s\n", "0");
 
 	return (0);
