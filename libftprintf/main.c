@@ -29,36 +29,86 @@ int		main(void)
 //	res_my = ft_printf("my: |%*.2s|\n",-10,"HelloWorld");
 //	printf("len pf: %d\n", res_pf);
 //	printf("len my: %d\n", res_my);
-//	int		a = -4;
-//	int		b = 0;
-//	char	c = 'a';
-//	int		d = 2147483647;
-//	int		e = -2147483648;
-//	int		f = 42;
-//	int		g = 25;
-//	int		h = 4200;
-//	int		i = 8;
-//	int		j = -12;
-//	int		k = 123456789;
-//	int		l = 0;
-//	int		m = -12345678;
-//	char	*n = "abcdefghijklmnop";
-//	char	*o = "-a";
-//	char	*p = "-12";
-//	char	*q = "0";
-//	char	*r = "%%";
-//	char	*s = "-2147483648";
-//	char	*t = "0x12345678";
-//	char	*u = "-0";
+
+	int i;
+	printf("%p\n", &i);
+	ft_printf("%p\n", &i);
 	
-	printf("|%1.d|\n", 0);
-	ft_printf("|%1.d|\n",0);
+//	int result1;
+//	int result2;
+//	char *format;
+//	puts("\n\n--------------------------------s--------------------------------");
+//	format = "|%0*.*s| |%-4.19s| |%04.13s|";
+//	result1 = ft_printf(format, 17, 12, "это русский текст1", "this is a text2", "text2");
+//	printf("\t\tmy result: %d\n", result1);
+//	result2 = printf(format, 17, 12, "это русский текст1", "this is a text2", "text2");
+//	printf("\t\tlb result: %d\n\n", result2);
+//
+//	format = "|%03.6s| |%.1s|";
+//	printf("\tmy result: %d\n\n", ft_printf(format, NULL));
+//	printf("\tlb result: %d\n\n", printf(format, NULL));
+//
+//	format = "|%.*s|";
+//	printf("\tmy result: %d\n", ft_printf(format, -13, "hello"));
+//	printf("\tlb result: %d\n\n", printf(format, -13, "hello"));
+	
+//	int result1;
+//	int result2;
+//	char *format;
+//	puts("\n-------------------------------di--------------------------------");
+//	format = "|%-4.11d| |%-4.12i| |%-12.7d| |%06.4d|";
+//	result1 = ft_printf(format, INT_MIN, 234, 44444, -13);
+//	printf("\t\tmy result: %d\n", result1);
+//	result2 = printf(format, INT_MIN, 234, 44444, -13);
+//	printf("\t\tlb result: %d\n\n", result2);
+//
+//	result1 = ft_printf("|%*.*d|", 0, 0, 0);
+//	printf("\t\tmy result: %d\n", result1);
+//	result2 = printf("|%*.*d|", 0, 0, 0);
+//	printf("\t\tlb result: %d\n\n", result2);
+//
+//	format = "|%*.*d| |%08.3d| |%0*i|";
+//	result1 = ft_printf(format, 8, 4, 2, 8375, -5, -54);
+//	printf("\t\tmy result: %d\n", result1);
+//	result2 = printf(format, 8, 4, 2, 8375, -5, -54);
+//	printf("\t\tlb result: %d\n\n", result2);
+//
+//	format = "|%0.0d| |%6.0d| |%0.1d| |%05.1d| |%0.0d| |%0.1d|";
+//	result1 = ft_printf(format, 0, 0, 0, 0, 1, 1);
+//	printf("\t\tmy result: %d\n", result1);
+//	result2 = printf(format,  0, 0, 0, 0, 1, 1);
+//	printf("\t\tlb result: %d\n\n", result2);
+//
+//	format = "|%-0.0d| |%-6.0d| |%-0.1d| |%-1.1d| |%-0.0d| |%-0.1d|";
+//	result1 = ft_printf(format, 0, 0, 0, 0, 1, 1);
+//	printf("\t\tmy result: %d\n", result1);
+//	result2 = printf(format,  0, 0, 0, 0, 1, 1);
+//	printf("\t\tlb result: %d\n\n", result2);
+//
+//	format = "|%0*i|";
+//	result1 = ft_printf(format, 7, -54);
+//	printf("\t\tmy result: %d\n", result1);
+//	result2 = printf(format, 7, -54);
+//	printf("\t\tlb result: %d\n\n", result2);
+//
+//	format = "%% *.5i 42 == |%*.5i|";
+//	result1 = ft_printf(format, 4, 42);
+//	printf("\t\tmy result: %d\n", result1);
+//	result2 = printf(format, 4, 42);
+//	printf("\t\tlb result: %d\n\n", result2);
+//
+//	format = "|%.5d|";
+//	result1 = ft_printf(format, -2372);
+//	printf("\t\tmy result: %d\n", result1);
+//	result2 = printf(format, -2372);
+//	printf("\t\tlb result: %d\n\n", result2);
 
 	/* МОИ ТЕСТЫ */
 //	ft_printf("-------------------------------------\n");
 //	ft_printf("---------------d and i---------------\n");
 //	ft_printf("-------------------------------------\n");
-//	ft_printf("-------------------------------------\n");
+//	int result_pf;
+//	int result_my;
 //	result_pf = printf("pf: %%d_neg = |%d|\n", -42);
 //	result_my = ft_printf("my: %%d_neg = |%d|\n", -42);
 //	ft_printf("len pf: %d\n", result_pf);
@@ -301,12 +351,5 @@ int		main(void)
 //	result_my = ft_printf("my: %%*p = |%*p|\n", 21 &a01);
 //	ft_printf("len pf: %d\n", result_pf);
 //	ft_printf("len pf: %d\n", result_my);
-	
-	
-	
-	/* Сделать */
-//	printf("%-4.9s\n", "0");
-//	ft_printf("%-4.9s\n", "0");
-
 	return (0);
 }

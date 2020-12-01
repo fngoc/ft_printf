@@ -67,4 +67,14 @@ void				ft_print_x(t_parser *p);
 
 void				ft_process(t_parser *p, int number);
 
+void				ft_print_s_utils_one(t_parser *p, char	*str);
+
+void				ft_print_s_utils_two(t_parser *p, char *str);
+
+void				ft_print_s_utils_three(t_parser *p, char *str);
+
+void				*ft_memcpy(void *dst, const void *src, size_t n);
+
+void				ft_print_adres(char *adres, char *result);
+
 #endif

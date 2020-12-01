@@ -1,9 +1,8 @@
 #include "libftprintf.h"
 
 /*
-** ft_check: проверка
-** на наличие '*' в парсере для
-** width и accuracy.
+** ft_check: проверка на наличие '*'
+** в парсере для width и accuracy.
 */
 
 void ft_check(t_parser *p)

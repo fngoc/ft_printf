@@ -16,7 +16,7 @@ static long ft_modul(long n)
 ** ft_print_d_or_i_one: если флаг '0' или флагов нет.
 */
 
-static void ft_print_d_or_i_two(t_parser *p, int number)
+static void ft_print_d_or_i_two(t_parser *p, int number, int old_width)
 {
 	if (number < 0 && p->tap == '0')
 		ft_putchar_fd('-', 1, p);
@@ -28,7 +28,7 @@ static void ft_print_d_or_i_two(t_parser *p, int number)
 		ft_putnbr_fd(ft_modul(number), 1, p);
 	else
 	{
-		if (p->width != 0)
+		if (p->width != old_width)
 			ft_putchar_fd(' ', 1, p);
 	}
 }
@@ -37,7 +37,7 @@ static void ft_print_d_or_i_two(t_parser *p, int number)
 ** ft_print_d_or_i_one: если флаг '-'.
 */
 
-static void ft_print_d_or_i_one(t_parser *p, int number)
+static void ft_print_d_or_i_one(t_parser *p, int number, int old_width)
 {
 	if (number < 0)
 		ft_putchar_fd('-', 1, p);
@@ -46,7 +46,7 @@ static void ft_print_d_or_i_one(t_parser *p, int number)
 		ft_putnbr_fd(ft_modul(number), 1, p);
 	else
 	{
-		if (p->width != 0)
+		if (p->width != old_width)
 			ft_putchar_fd(' ', 1, p);
 	}
 	ft_putchar_fd_mod(p->tap, 1, p->width, p);
@@ -59,12 +59,17 @@ static void ft_print_d_or_i_one(t_parser *p, int number)
 void ft_print_d_or_i(t_parser *p)
 {
 	int number;
+	int old_width;
 
+	old_width = p->width;
 	ft_check(p);
 	number = va_arg(p->ap, int);
+	if (p->width == 0 && p->accuracy == 0
+		&& number == 0 && p->dot == '.')
+		return ;
 	ft_process(p, number);
 	if (p->flags == '-')
-		ft_print_d_or_i_one(p, number);
+		ft_print_d_or_i_one(p, number, old_width);
 	else
-		ft_print_d_or_i_two(p, number);
+		ft_print_d_or_i_two(p, number, old_width);
 }

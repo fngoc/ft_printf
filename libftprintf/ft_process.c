@@ -23,8 +23,6 @@ void	ft_process(t_parser *p, int number)
 	digit_num = ft_digit_num(number);
 	if ((p->accuracy + digit_num) < p->width)
 		p->width = p->width - (p->accuracy + digit_num);
-//	else if (p->width == 1 && number == 0)
-//		p->width = 1;
 	else
 		p->width = 0;
 }
