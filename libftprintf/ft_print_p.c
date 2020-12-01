@@ -43,16 +43,16 @@ static void fr_print_p_zero(t_parser *p)
 
 void	ft_print_p(t_parser *p)
 {
-	void *adress;
+	void *address;
 	char str[17];
 
 	ft_check(p);
-	adress = va_arg(p->ap, char *);
-	if (!adress)
+	address = va_arg(p->ap, char *);
+	if (!address)
 	{
 		fr_print_p_zero(p);
 		return ;
 	}
-	ft_print_addres(adress, str);
+	ft_print_address(address, str);
 	ft_putstr_fd_mod(str, 1, p);
 }

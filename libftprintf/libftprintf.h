@@ -75,6 +75,6 @@ void				ft_print_s_utils_three(t_parser *p, char *str);
 
 void				*ft_memcpy(void *dst, const void *src, size_t n);
 
-void				ft_print_addres(char *adres, char *result);
+void				ft_print_address(char *address, char *result);
 
 #endif
