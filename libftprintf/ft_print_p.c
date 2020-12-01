@@ -53,6 +53,6 @@ void	ft_print_p(t_parser *p)
 		fr_print_p_zero(p);
 		return ;
 	}
-	ft_print_adres(adress, str);
+	ft_print_addres(adress, str);
 	ft_putstr_fd_mod(str, 1, p);
 }

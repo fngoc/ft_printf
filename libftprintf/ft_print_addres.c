@@ -56,10 +56,10 @@ static void dec_to_hex(char *str, long l)
 }
 
 /*
-** ft_print_adres: выводит адресс переменной.
+** ft_print_addres: выводит адресс переменной.
 */
 
-void ft_print_adres(char *adres, char *result)
+void ft_print_addres(char *adres, char *result)
 {
 	long int addres_long;
 
