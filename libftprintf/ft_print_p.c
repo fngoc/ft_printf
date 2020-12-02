@@ -1,50 +1,76 @@
 #include "libftprintf.h"
 
 /*
-** fr_print_s_zero: если адрес == NULL или 0.
+** fr_print_p_zero: если адрес == NULL или 0.
 */
 
-static void fr_print_p_zero(t_parser *p)
+static void	fr_print_p_zero(t_parser *p)
 {
 	if (p->dot == 'N')
 	{
-		ft_putstr_fd_mod("0x0", 1, p);
-		return ;
+		if (p->width < 3)
+			ft_putstr_fd_mod("0x0", 1, p);
+		else if (p->width > 0 && p->flags != '-')
+		{
+			ft_putchar_fd_mod(' ', 1, p->width - 3, p);
+			ft_putstr_fd_mod("0x0", 1, p);
+		}
+		else if (p->width > 0 && p->flags == '-')
+		{
+			ft_putstr_fd_mod("0x0", 1, p);
+			ft_putchar_fd_mod(' ', 1, p->width - 3, p);
+		}
+		else
+			ft_putstr_fd_mod("0x0", 1, p);
 	}
-	if (p->width > p->accuracy && p->accuracy == 0)
+	else if (p->dot == '.' && p->width > 0)
 	{
-		ft_putchar_fd_mod(' ', 1, p->width - 3, p);
-		ft_putstr_fd_mod("0x0", 1, p);
-		return ;
-	}
-	if (p->dot == '.' && p->accuracy == 0 && p->width == 0)
-	{
+		if (p->width > 2)
+			ft_putchar_fd_mod(' ', 1, p->width - 2, p);
 		ft_putstr_fd_mod("0x", 1, p);
-		return ;
 	}
-	if (p ->width > p->accuracy && p->accuracy != 0)
-	{
+	else
 		ft_putstr_fd_mod("0x0", 1, p);
-		ft_putchar_fd_mod('0', 1, p->width - 3, p);
-		return ;
-	}
-	if (p ->width < p->accuracy)
+}
+
+/*
+** ft_print_address_flag_minus: если флаг '-'.
+*/
+
+static void	ft_print_address_flag_minus(char *str, t_parser *p)
+{
+	if (p->width > 0 && p->width >= 14)
 	{
-		ft_putstr_fd_mod("0x0", 1, p);
-		ft_putchar_fd_mod('0', 1, p->accuracy - 1, p);
+		ft_putstr_fd_mod(str, 1, p);
+		ft_putchar_fd_mod(' ', 1, p->width - ft_strlen(str), p);
 		return ;
 	}
-	ft_putstr_fd_mod("0x0", 1, p);
+	ft_putstr_fd_mod(str, 1, p);
+}
+
+/*
+** ft_print_address_noflag: если фагов нет.
+*/
+
+static void	ft_print_address_noflag(char *str, t_parser *p)
+{
+	if (p->width > 0 && p->width >= 14)
+	{
+		ft_putchar_fd_mod(' ', 1, p->width - ft_strlen(str), p);
+		ft_putstr_fd_mod(str, 1, p);
+		return ;
+	}
+	ft_putstr_fd_mod(str, 1, p);
 }
 
 /*
 ** ft_print_p: выводит адрес.
 */
 
-void	ft_print_p(t_parser *p)
+void		ft_print_p(t_parser *p)
 {
 	void *address;
-	char str[17];
+	char buf[20];
 
 	ft_check(p);
 	address = va_arg(p->ap, char *);
@@ -53,6 +79,9 @@ void	ft_print_p(t_parser *p)
 		fr_print_p_zero(p);
 		return ;
 	}
-	ft_print_address(address, str);
-	ft_putstr_fd_mod(str, 1, p);
+	ft_make_address(address, buf);
+	if (p->flags == '-')
+		ft_print_address_flag_minus(buf, p);
+	else
+		ft_print_address_noflag(buf, p);
 }

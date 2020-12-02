@@ -8,100 +8,66 @@ int		main(void)
 //	ft_printf("Hello it's me %s, year %d and my first letter %c %%\n", "OLEG", 38, 'o');
 //	ft_printf("%d\n%s\n%c\n%%\n%s\n%d\n", 21, "lol", 't', "kek", 17);
 
-//	int r00 = 0;
-//	char *s_hello = "hello world";
-//	char	a01;
-//	unsigned char a02;
-//	short a03;
-//	unsigned short a04;
-//	int a05;
-//	unsigned int a06;
-//	long a07;
-//	unsigned long a08;
-//	long long a09;
-//	unsigned long long a10;
-//	char *a11;
-//	void *a12;
-
-//	int res_pf;
-//	int res_my;
-//	res_pf = printf("pf: |%*.2s|\n",-10,"HelloWorld");
-//	res_my = ft_printf("my: |%*.2s|\n",-10,"HelloWorld");
-//	printf("len pf: %d\n", res_pf);
+	int res_pf;
+	int res_my;
+//	res_my = ft_printf("my: |%3x|\n", 0);
+//	res_pf = printf("pf: |%3x|\n", 0);
 //	printf("len my: %d\n", res_my);
+//	printf("len pf: %d\n", res_pf);
+	
+	res_my = ft_printf("my: |%3s|\n", "HelloWorld");
+	res_pf = printf("pf: |%3s|\n", "HelloWorld");
+	printf("len my: %d\n", res_my);
+	printf("len pf: %d\n", res_pf);
+	
+//	puts("\n\n--------------------------------p--------------------------------");
+//	long long n1 = 12;
+//
+//	result1 = ft_printf("|%2p| |%4p| |%4.p| |%1.p|", NULL, NULL, NULL, NULL);
+//	printf("\t\tmy result: %d\n", result1);
+//	result2 = printf("|%2p| |%4p| |%4.p| |%1.p|", NULL, NULL, NULL, NULL);
+//	printf("\t\tlb result: %d\n\n", result2);
+//
+//	result1 = ft_printf("|%2p|", &n1);
+//	printf("\t\tmy result: %d\n", result1);
+//	result2 = printf("|%2p|", &n1);
+//	printf("\t\tlb result: %d\n\n", result2);
+//
+//	result1 = ft_printf("|%24p| |%24p| |%16p|", &n1, &n1, &n1);
+//	printf("\t\tmy result: %d\n", result1);
+//	result2 = printf("|%24p| |%24p| |%16p|", &n1, &n1, &n1);
+//	printf("\t\tlb result: %d\n\n", result2);
+//
+//	result1 = ft_printf("|%24p| |%24p|", &n1, &n1);
+//	printf("\t\tmy result: %d\n", result1);
+//	result2 = printf("|%24p| |%24p|", &n1, &n1);
+//	printf("\t\tlb result: %d\n\n", result2);
+//
+//	result1 = ft_printf("|%22.8p| |%4p|", &n1, NULL);
+//	printf("\t\tmy result: %d\n", result1);
+//	result2 = printf("|%22.p| |%4p|", &n1, NULL);
+//	printf("\t\tlb result: %d\n\n", result2);
+//
+//	result1 = ft_printf("|%-24p| |%-24p| |%-16p|", &n1, &n1, &n1);
+//	printf("\t\tmy result: %d\n", result1);
+//	result2 = printf("|%-24p| |%-24p| |%-16p|", &n1, &n1, &n1);
+//	printf("\t\tlb result: %d\n\n", result2);
+//
+//	result1 = ft_printf("|%-24p| |%-24p| |%-12p|", &n1, &n1, NULL);
+//	printf("\t\tmy result: %d\n", result1);
+//	result2 = printf("|%-24p| |%-24p| |%-12p|", &n1, &n1, NULL);
+//	printf("\t\tlb result: %d\n\n", result2);
+//
+//	result1 = ft_printf("|%-25p| |%-24p|", &n1, NULL);
+//	printf("\t\tmy result: %d\n", result1);
+//	result2 = printf("|%-25p| |%-24p|", &n1, NULL);
+//	printf("\t\tlb result: %d\n\n", result2);
+//
+//	result1 = ft_printf("|%-17p| |%-6p|", &n1, NULL);
+//	printf("\t\tmy result: %d\n", result1);
+//	result2 = printf("|%-17p| |%-6p|", &n1, NULL);
+//	printf("\t\tlb result: %d\n\n", result2);
 
-	int i;
-	printf("%p\n", &i);
-	ft_printf("%p\n", &i);
-	
-//	int result1;
-//	int result2;
-//	char *format;
-//	puts("\n\n--------------------------------s--------------------------------");
-//	format = "|%0*.*s| |%-4.19s| |%04.13s|";
-//	result1 = ft_printf(format, 17, 12, "это русский текст1", "this is a text2", "text2");
-//	printf("\t\tmy result: %d\n", result1);
-//	result2 = printf(format, 17, 12, "это русский текст1", "this is a text2", "text2");
-//	printf("\t\tlb result: %d\n\n", result2);
-//
-//	format = "|%03.6s| |%.1s|";
-//	printf("\tmy result: %d\n\n", ft_printf(format, NULL));
-//	printf("\tlb result: %d\n\n", printf(format, NULL));
-//
-//	format = "|%.*s|";
-//	printf("\tmy result: %d\n", ft_printf(format, -13, "hello"));
-//	printf("\tlb result: %d\n\n", printf(format, -13, "hello"));
-	
-//	int result1;
-//	int result2;
-//	char *format;
-//	puts("\n-------------------------------di--------------------------------");
-//	format = "|%-4.11d| |%-4.12i| |%-12.7d| |%06.4d|";
-//	result1 = ft_printf(format, INT_MIN, 234, 44444, -13);
-//	printf("\t\tmy result: %d\n", result1);
-//	result2 = printf(format, INT_MIN, 234, 44444, -13);
-//	printf("\t\tlb result: %d\n\n", result2);
-//
-//	result1 = ft_printf("|%*.*d|", 0, 0, 0);
-//	printf("\t\tmy result: %d\n", result1);
-//	result2 = printf("|%*.*d|", 0, 0, 0);
-//	printf("\t\tlb result: %d\n\n", result2);
-//
-//	format = "|%*.*d| |%08.3d| |%0*i|";
-//	result1 = ft_printf(format, 8, 4, 2, 8375, -5, -54);
-//	printf("\t\tmy result: %d\n", result1);
-//	result2 = printf(format, 8, 4, 2, 8375, -5, -54);
-//	printf("\t\tlb result: %d\n\n", result2);
-//
-//	format = "|%0.0d| |%6.0d| |%0.1d| |%05.1d| |%0.0d| |%0.1d|";
-//	result1 = ft_printf(format, 0, 0, 0, 0, 1, 1);
-//	printf("\t\tmy result: %d\n", result1);
-//	result2 = printf(format,  0, 0, 0, 0, 1, 1);
-//	printf("\t\tlb result: %d\n\n", result2);
-//
-//	format = "|%-0.0d| |%-6.0d| |%-0.1d| |%-1.1d| |%-0.0d| |%-0.1d|";
-//	result1 = ft_printf(format, 0, 0, 0, 0, 1, 1);
-//	printf("\t\tmy result: %d\n", result1);
-//	result2 = printf(format,  0, 0, 0, 0, 1, 1);
-//	printf("\t\tlb result: %d\n\n", result2);
-//
-//	format = "|%0*i|";
-//	result1 = ft_printf(format, 7, -54);
-//	printf("\t\tmy result: %d\n", result1);
-//	result2 = printf(format, 7, -54);
-//	printf("\t\tlb result: %d\n\n", result2);
-//
-//	format = "%% *.5i 42 == |%*.5i|";
-//	result1 = ft_printf(format, 4, 42);
-//	printf("\t\tmy result: %d\n", result1);
-//	result2 = printf(format, 4, 42);
-//	printf("\t\tlb result: %d\n\n", result2);
-//
-//	format = "|%.5d|";
-//	result1 = ft_printf(format, -2372);
-//	printf("\t\tmy result: %d\n", result1);
-//	result2 = printf(format, -2372);
-//	printf("\t\tlb result: %d\n\n", result2);
 
 	/* МОИ ТЕСТЫ */
 //	ft_printf("-------------------------------------\n");

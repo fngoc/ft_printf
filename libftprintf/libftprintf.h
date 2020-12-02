@@ -63,18 +63,30 @@ void				ft_print_percent(t_parser *p);
 
 void				ft_print_p(t_parser *p);
 
-void				ft_print_x(t_parser *p);
+void				ft_print_x_or_X(t_parser *p);
+
+void				ft_print_u(t_parser *p);
 
 void				ft_process(t_parser *p, int number);
 
-void				ft_print_s_utils_one(t_parser *p, char	*str);
+void				*ft_memcpy(void *dst, const void *src, size_t n);
+
+void				ft_make_address(char *address, char *result);
+
+void				ft_bzero(void *s, size_t n);
+
+void				ft_process_u(t_parser *p, unsigned int number);
+
+int					ft_digit_num_u(unsigned int n);
+
+void				ft_reverse(char *s);
+
+void				ft_process_x_or_X(t_parser *p, char *str);
+
+void				ft_print_s_utils_one(t_parser *p, char *str);
 
 void				ft_print_s_utils_two(t_parser *p, char *str);
 
 void				ft_print_s_utils_three(t_parser *p, char *str);
-
-void				*ft_memcpy(void *dst, const void *src, size_t n);
-
-void				ft_print_address(char *address, char *result);
 
 #endif
