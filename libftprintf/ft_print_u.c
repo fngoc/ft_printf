@@ -1,10 +1,22 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_print_u.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: fngoc <fngoc@student.42.fr>                +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/12/03 11:59:41 by fngoc             #+#    #+#             */
+/*   Updated: 2020/12/03 11:59:41 by fngoc            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libftprintf.h"
 
 /*
 ** ft_print_u_two: если флаг '0' или флагов нет.
 */
 
-static void ft_print_u_two(t_parser *p, long int number, int old_width)
+static void	ft_print_u_two(t_parser *p, long int number, int old_width)
 {
 	ft_putchar_fd_mod(p->tap, 1, p->width, p);
 	ft_putchar_fd_mod('0', 1, p->accuracy, p);
@@ -21,7 +33,7 @@ static void ft_print_u_two(t_parser *p, long int number, int old_width)
 ** ft_print_u_one: если флаг '-'.
 */
 
-static void ft_print_u_one(t_parser *p, long int number, int old_width)
+static void	ft_print_u_one(t_parser *p, long int number, int old_width)
 {
 	ft_putchar_fd_mod('0', 1, p->accuracy, p);
 	if (!(number == 0 && p->dot == '.' && p->accuracy == 0))
@@ -38,13 +50,12 @@ static void ft_print_u_one(t_parser *p, long int number, int old_width)
 ** ft_print_u: печать типа u.
 */
 
-void	ft_print_u(t_parser *p)
+void		ft_print_u(t_parser *p)
 {
-	unsigned int number;
-	int old_width;
+	unsigned int	number;
+	int				old_width;
 
 	old_width = p->width;
-	ft_check(p);
 	number = va_arg(p->ap, unsigned int);
 	if (p->width == 0 && p->accuracy == 0
 		&& number == 0 && p->dot == '.')

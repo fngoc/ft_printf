@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_parser.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: fngoc <fngoc@student.42.fr>                +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/12/03 11:58:32 by fngoc             #+#    #+#             */
+/*   Updated: 2020/12/03 11:58:33 by fngoc            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libftprintf.h"
 
 /*
@@ -40,12 +52,11 @@ static void	ft_parser_accuracy(char **str, t_parser *p)
 		++*str;
 		while (**str == '.')
 			++*str;
-		while (p->accuracy == '0' ||
-			   ft_isdigit(**str) || **str == '*')
+		while (p->accuracy == '0' || ft_isdigit(**str) || **str == '*')
 		{
 			if (**str == '*')
 			{
-				(*p).accuracy = '*';
+				ft_get_accuracy(p);
 				++*str;
 			}
 			else if (ft_isdigit(**str))
@@ -55,8 +66,6 @@ static void	ft_parser_accuracy(char **str, t_parser *p)
 			}
 		}
 	}
-	else
-		return ;
 }
 
 /*
@@ -68,6 +77,7 @@ static void	ft_parser_width(char **str, t_parser *p)
 	if (**str == '*')
 	{
 		(*p).width = '*';
+		ft_get_width(p);
 		++*str;
 	}
 	else if (ft_isdigit(**str))
@@ -107,7 +117,7 @@ static void	ft_parser_flags(char **str, t_parser *p)
 ** ft_parser: парсер флагов, ширины, строки и типа.
 */
 
-void	ft_parser(char **str, t_parser *parser)
+void		ft_parser(char **str, t_parser *parser)
 {
 	ft_newtparser(parser);
 	ft_parser_flags(str, parser);

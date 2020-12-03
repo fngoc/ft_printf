@@ -1,10 +1,22 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_print_c.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: fngoc <fngoc@student.42.fr>                +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/12/03 11:58:43 by fngoc             #+#    #+#             */
+/*   Updated: 2020/12/03 11:58:44 by fngoc            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libftprintf.h"
 
 /*
 ** fr_print_c_two: если флаг '0'.
 */
 
-static void fr_print_c_two(t_parser *p, char ch)
+static void	fr_print_c_two(t_parser *p, char ch)
 {
 	if (p->width == 0)
 	{
@@ -19,7 +31,7 @@ static void fr_print_c_two(t_parser *p, char ch)
 ** fr_print_c_one: если флаг '-'.
 */
 
-static void fr_print_c_one(t_parser *p, char ch)
+static void	fr_print_c_one(t_parser *p, char ch)
 {
 	if (p->width == 0)
 	{
@@ -34,11 +46,10 @@ static void fr_print_c_one(t_parser *p, char ch)
 ** ft_print_c: печать типа c.
 */
 
-void ft_print_c(t_parser *p)
+void		ft_print_c(t_parser *p)
 {
-	char ch;
+	char	ch;
 
-	ft_check(p);
 	ch = va_arg(p->ap, int);
 	if (p->flags == '-')
 	{

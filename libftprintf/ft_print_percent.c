@@ -1,10 +1,22 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_print_percent.c                                 :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: fngoc <fngoc@student.42.fr>                +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/12/03 11:59:00 by fngoc             #+#    #+#             */
+/*   Updated: 2020/12/03 11:59:01 by fngoc            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libftprintf.h"
 
 /*
 ** fr_print_percent_two: если флаг '0'.
 */
 
-static void fr_print_percent_two(t_parser *p, char ch)
+static void	fr_print_percent_two(t_parser *p, char ch)
 {
 	if (p->width == 0)
 	{
@@ -19,7 +31,7 @@ static void fr_print_percent_two(t_parser *p, char ch)
 ** fr_print_percent_one: если флаг '-'.
 */
 
-static void fr_print_percent_one(t_parser *p, char ch)
+static void	fr_print_percent_one(t_parser *p, char ch)
 {
 	if (p->width == 0)
 	{
@@ -34,12 +46,11 @@ static void fr_print_percent_one(t_parser *p, char ch)
 ** ft_print_percent: печать %.
 */
 
-void ft_print_percent(t_parser *p)
+void		ft_print_percent(t_parser *p)
 {
-	char ch;
+	char	ch;
 
 	ch = '%';
-	ft_check(p);
 	if (p->flags == '-')
 	{
 		fr_print_percent_one(p, ch);

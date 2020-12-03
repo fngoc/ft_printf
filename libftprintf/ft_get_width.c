@@ -1,29 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_bzero.c                                         :+:      :+:    :+:   */
+/*   ft_get_width.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fngoc <fngoc@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/12/03 11:57:25 by fngoc             #+#    #+#             */
-/*   Updated: 2020/12/03 11:57:27 by fngoc            ###   ########.fr       */
+/*   Created: 2020/12/03 12:52:45 by fngoc             #+#    #+#             */
+/*   Updated: 2020/12/03 12:52:46 by fngoc            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
 
 /*
-** bzero: записывает n обнуленных байтов в строку s.
-** Если n равно ноль, bzero ничего не делает.
+** ft_get_width: берет значение width.
 */
 
-void	ft_bzero(void *s, size_t n)
+void	ft_get_width(t_parser *p)
 {
-	char *tmp;
-
-	if (n == 0)
-		return ;
-	tmp = s;
-	while (n-- != 0)
-		*tmp++ = '\0';
+	p->width = va_arg(p->ap, int);
+	if (p->width < 0)
+	{
+		p->flags = '-';
+		p->tap = ' ';
+		p->width = p->width * (-1);
+	}
 }

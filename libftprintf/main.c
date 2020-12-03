@@ -10,15 +10,39 @@ int		main(void)
 
 	int res_pf;
 	int res_my;
-//	res_my = ft_printf("my: |%3x|\n", 0);
-//	res_pf = printf("pf: |%3x|\n", 0);
+	res_my = ft_printf("my: |%.*x|\n", -1, 0);
+	res_pf = printf("pf: |%.*x|\n", -1, 0);
+	printf("len my: %d\n", res_my);
+	printf("len pf: %d\n", res_pf);
+//
+//	res_my = ft_printf("|%-32s|\n", NULL);
+//	res_pf = printf("|%-32s|\n", NULL);
 //	printf("len my: %d\n", res_my);
 //	printf("len pf: %d\n", res_pf);
 	
-	res_my = ft_printf("my: |%3s|\n", "HelloWorld");
-	res_pf = printf("pf: |%3s|\n", "HelloWorld");
-	printf("len my: %d\n", res_my);
-	printf("len pf: %d\n", res_pf);
+//	 Ломает ft_check
+//	res_my = ft_printf("my: |%42d|\n", 4242);
+//	res_pf = printf("pf: |%42d|\n", 4242);
+//	printf("len my: %d\n", res_my);
+//	printf("len pf: %d\n", res_pf);
+	
+//	int result1;
+//	int result2;
+//	char *format;
+//	puts("\n\n--------------------------------s--------------------------------");
+//	format = "|%0*.*s| |%-4.19s| |%04.13s|";
+//	result1 = ft_printf(format, 17, 12, "это русский текст1", "this is a text2", "text2");
+//	printf("\t\tmy result: %d\n", result1);
+//	result2 = printf(format, 17, 12, "это русский текст1", "this is a text2", "text2");
+//	printf("\t\tlb result: %d\n\n", result2);
+//
+//	format = "|%03.6s| |%.1s|";
+//	printf("\tmy result: %d\n\n", ft_printf(format, NULL));
+//	printf("\tlb result: %d\n\n", printf(format, NULL));
+//
+//	format = "|%.*s|";
+//	printf("\tmy result: %d\n\n", ft_printf(format, -13, "hello"));
+//	printf("\tlb result: %d\n\n", printf(format, -13, "hello"));
 	
 //	puts("\n\n--------------------------------p--------------------------------");
 //	long long n1 = 12;

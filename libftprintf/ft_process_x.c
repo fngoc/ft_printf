@@ -1,36 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
+/*   ft_process_x_or_X.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fngoc <fngoc@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/12/03 12:00:13 by fngoc             #+#    #+#             */
-/*   Updated: 2020/12/03 12:00:13 by fngoc            ###   ########.fr       */
+/*   Created: 2020/12/03 12:00:02 by fngoc             #+#    #+#             */
+/*   Updated: 2020/12/03 12:00:02 by fngoc            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
 
 /*
-** ft_putnbr_fd: Выводит целое число 'n'
-** в указанный файл дескриптор.
+** ft_process_x_or_X: установка значений в ширину и точность.
 */
 
-static void	print_symbole(long int n, int fd, t_parser *p)
+void	ft_process_x(t_parser *p, char *str)
 {
-	if (n > 9)
-		print_symbole(n / 10, fd, p);
-	ft_putchar_fd((n % 10 + '0'), fd, p);
-}
+	int len_hex;
 
-void		ft_putnbr_fd(long int n, int fd, t_parser *p)
-{
-	if (n < 0)
+	if (p->dot == '.')
 	{
-		ft_putchar_fd('-', fd, p);
-		print_symbole(n * (-1), fd, p);
+		p->tap = ' ';
+		len_hex = ft_strlen(str);
+		if (p->accuracy >= len_hex)
+		{
+			p->accuracy = p->accuracy - len_hex;
+		}
+		else
+			p->accuracy = 0;
 	}
+	len_hex = ft_strlen(str);
+	if ((p->accuracy + len_hex) < p->width)
+		p->width = p->width - (p->accuracy + len_hex);
 	else
-		print_symbole(n, fd, p);
+		p->width = 0;
 }

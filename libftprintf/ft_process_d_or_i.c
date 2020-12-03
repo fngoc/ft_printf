@@ -1,30 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_process_u.c                                     :+:      :+:    :+:   */
+/*   ft_process_d_or_i.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fngoc <fngoc@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/12/03 11:59:58 by fngoc             #+#    #+#             */
-/*   Updated: 2020/12/03 11:59:58 by fngoc            ###   ########.fr       */
+/*   Created: 2020/12/03 11:59:54 by fngoc             #+#    #+#             */
+/*   Updated: 2020/12/03 11:59:54 by fngoc            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
 
 /*
-** ft_process_u: установка значений в ширину
-** и точность для unsigned int.
+** ft_process_d_or_i: установка значений в ширину и точность.
 */
 
-void	ft_process_u(t_parser *p, unsigned int n)
+void	ft_process_d_or_i(t_parser *p, int n)
 {
-	int digit_num;
+	int	digit_num;
 
 	if (p->dot == '.')
 	{
 		p->tap = ' ';
-		digit_num = (n < 0) ? ft_digit_num_u(n) - 1 : ft_digit_num_u(n);
+		digit_num = (n < 0) ? ft_digit_num(n) - 1 : ft_digit_num(n);
 		if (p->accuracy >= digit_num)
 		{
 			p->accuracy = p->accuracy - digit_num;
@@ -33,7 +32,7 @@ void	ft_process_u(t_parser *p, unsigned int n)
 		else
 			p->accuracy = 0;
 	}
-	digit_num = ft_digit_num_u(n);
+	digit_num = ft_digit_num(n);
 	if ((p->accuracy + digit_num) < p->width)
 		p->width = p->width - (p->accuracy + digit_num);
 	else

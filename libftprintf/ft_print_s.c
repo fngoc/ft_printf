@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_print_s.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: fngoc <fngoc@student.42.fr>                +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/12/03 11:59:37 by fngoc             #+#    #+#             */
+/*   Updated: 2020/12/03 11:59:37 by fngoc            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libftprintf.h"
 
 /*
@@ -8,24 +20,18 @@ void	ft_print_s(t_parser *p)
 {
 	char	*str;
 
-	ft_check(p);
 	str = va_arg(p->ap, char *);
 	if (!str)
 		str = "(null)";
-	if (p->check_for_str == 'Y')
-		ft_putstr_fd_mod(str, 1, p);
-	if (p->width == 0 && p->accuracy == 0 && p->dot == '.')
-		return ;
-	if (p->width != 0 && p->accuracy == 0 && p->dot == '.')
+	ft_process_s(p, str);
+	if (p->flags == '-')
 	{
-		ft_print_s_utils_two(p, str);
-		return ;
+		ft_putstr_fd_mod_col(str, 1, p, p->accuracy);
+		ft_putchar_fd_mod(p->tap, 1, p->width, p);
 	}
-	if ((p->accuracy == 0) || (p->width > p->accuracy) ||
-		(p->accuracy > p->width) || (p->width == p->accuracy))
+	else
 	{
-		ft_print_s_utils_one(p, str);
-		return ;
+		ft_putchar_fd_mod(p->tap, 1, p->width, p);
+		ft_putstr_fd_mod_col(str, 1, p, p->accuracy);
 	}
-	ft_putstr_fd_mod(str, 1, p);
 }
