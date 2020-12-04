@@ -16,7 +16,6 @@
 # include <unistd.h>
 # include <stdlib.h>
 # include <stdarg.h>
-# include <stdio.h> /* Для printf */
 
 typedef struct		s_parser
 {
@@ -62,11 +61,15 @@ void				ft_process_s(t_parser *p, char *str);
 
 void				ft_print_p(t_parser *p);
 
+void				ft_process_p(t_parser *p, char *str);
+
 void				ft_make_address(char *address, char *result);
 
 void				ft_print_x(t_parser *p);
 
 void				ft_process_x(t_parser *p, char *str);
+
+void				ft_process_x_zero(t_parser *p);
 
 int					ft_print_parser(t_parser *p);
 

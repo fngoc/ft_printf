@@ -1,37 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_process_x_or_X.c                                :+:      :+:    :+:   */
+/*   ft_process_x_zero.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fngoc <fngoc@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/12/03 12:00:02 by fngoc             #+#    #+#             */
-/*   Updated: 2020/12/03 12:00:02 by fngoc            ###   ########.fr       */
+/*   Created: 2020/12/04 16:23:26 by fngoc             #+#    #+#             */
+/*   Updated: 2020/12/04 16:23:26 by fngoc            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
 
 /*
-** ft_process_x_or_X: установка значений в ширину и точность.
+** ft_process_x_zero: установка значений в ширину
+** и точность если number == 0.
 */
 
-void	ft_process_x(t_parser *p, char *str)
+void	ft_process_x_zero(t_parser *p)
 {
-	int len_hex;
-
 	if (p->dot == '.')
 	{
 		p->tap = ' ';
-		len_hex = ft_strlen(str);
-		if (p->accuracy >= len_hex)
-			p->accuracy = p->accuracy - len_hex;
-		else
+		if (p->accuracy < 0)
 			p->accuracy = 0;
+		else if (p->accuracy >= 1)
+		{
+			p->accuracy = p->accuracy - 1;
+			p->dot = (p->accuracy > 0);
+		}
 	}
-	len_hex = ft_strlen(str);
-	if ((p->accuracy + len_hex) < p->width)
-		p->width = p->width - (p->accuracy + len_hex);
+	if (p->width > (1 + p->accuracy))
+		p->width = p->width - (1 + p->accuracy);
 	else
 		p->width = 0;
 }

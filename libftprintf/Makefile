@@ -23,7 +23,8 @@ SRC = ft_printf.c ft_putnbr_fd.c ft_atoi.c ft_digit_num.c ft_isdigit.c\
 		ft_bzero.c ft_putstr_fd_mod_col.c ft_print_s.c ft_print_percent.c\
 		ft_print_p.c ft_print_x.c ft_memcpy.c ft_make_address.c\
 		ft_print_u.c ft_digit_num_u.c ft_process_u.c ft_reverse.c\
-		ft_process_x.c ft_process_s.c ft_get_width.c
+		ft_process_x.c ft_process_s.c ft_get_width.c ft_process_x_zero.c\
+		ft_process_p.c
 
 OBJ = $(SRC:.c=.o)
 

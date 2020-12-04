@@ -17,7 +17,7 @@
 ** счисления в зависимости от флага меняется размер букв.
 */
 
-static void	dec_to_hex(char *str, long int l, int flag)
+static void	dec_to_hex(char *str, unsigned int l, int flag)
 {
 	int i;
 	int ost;
@@ -43,58 +43,73 @@ static void	dec_to_hex(char *str, long int l, int flag)
 }
 
 /*
-** ft_print_x_two: если флаг '0' или флагов нет.
+** ft_print_x_zero_norm: для нормы.
 */
 
-static void	ft_print_x_two(t_parser *p, char *str)
+static void	ft_print_x_zero_norm(t_parser *p, int old_width)
 {
 	ft_putchar_fd_mod(p->tap, 1, p->width, p);
 	ft_putchar_fd_mod('0', 1, p->accuracy, p);
-	ft_putstr_fd_mod(str, 1, p);
+	if (!(p->dot == '.' && p->accuracy == 0))
+		ft_putnbr_fd(0, 1, p);
+	else
+	{
+		if (old_width)
+			ft_putchar_fd(' ', 1, p);
+	}
 }
 
 /*
-** ft_print_x_one: если флаг '-'.
+** ft_print_x_zero: если number == 0.
 */
 
-static void	ft_print_x_one(t_parser *p, char *str)
+void		ft_print_x_zero(t_parser *p)
 {
-	ft_putchar_fd_mod('0', 1, p->accuracy, p);
-	ft_putstr_fd_mod(str, 1, p);
-	ft_putchar_fd_mod(p->tap, 1, p->width, p);
-}
+	int	old_width;
 
-/*
-** ft_print_x_zero: если 0.
-*/
-
-static void	ft_print_x_zero(t_parser *p)
-{
+	old_width = p->width;
+	if (p->width == 0 && p->dot == '.' && p->accuracy == 0)
+		return ;
+	ft_process_x_zero(p);
 	if (p->flags == '-')
 	{
-		if (p->accuracy == 0 && p->dot != '.')
-			ft_putchar_fd_mod('0', 1, p->accuracy + 1, p);
+		ft_putchar_fd_mod('0', 1, p->accuracy, p);
+		if (!(p->dot == '.' && p->accuracy == 0))
+			ft_putnbr_fd(0, 1, p);
 		else
-			ft_putchar_fd_mod('0', 1, p->accuracy, p);
-		if (p->width == 0 && p->accuracy == 0)
-			ft_putchar_fd('0', 1, p);
-		if (p->width > 0 && p->dot != '.' && p->accuracy == 0)
-			ft_putchar_fd_mod(p->tap, 1, p->width - 1, p);
-		else
-			ft_putchar_fd_mod(p->tap, 1, p->width, p);
+		{
+			if (old_width)
+				ft_putchar_fd(' ', 1, p);
+		}
+		ft_putchar_fd_mod(p->tap, 1, p->width, p);
+	}
+	else
+		ft_print_x_zero_norm(p, old_width);
+}
+
+/*
+** ft_print_x_norm: функция для нормы.
+*/
+
+static void	ft_print_x_norm(t_parser *p, char *buf, unsigned int number)
+{
+	if (!number)
+	{
+		ft_print_x_zero(p);
+		return ;
+	}
+	ft_process_x(p, buf);
+	if (p->flags == '-')
+	{
+		ft_putchar_fd_mod('0', 1, p->accuracy, p);
+		ft_putstr_fd_mod(buf, 1, p);
+		ft_putchar_fd_mod(p->tap, 1, p->width, p);
 	}
 	else
 	{
-		if (p->width > 0 && p->dot != '.' && p->accuracy == 0)
-			ft_putchar_fd_mod(p->tap, 1, p->width - 1, p);
-		else
-			ft_putchar_fd_mod(p->tap, 1, p->width, p);
-		if (p->accuracy == 0 && p->dot != '.')
-			ft_putchar_fd_mod('0', 1, p->accuracy + 1, p);
-		else
-			ft_putchar_fd_mod('0', 1, p->accuracy, p);
-		if (p->width == 0 && p->accuracy == 0)
-			ft_putchar_fd('0', 1, p);
+		ft_putchar_fd_mod(p->tap, 1, p->width, p);
+		ft_putchar_fd_mod('0', 1, p->accuracy, p);
+		ft_putstr_fd_mod(buf, 1, p);
 	}
 }
 
@@ -104,26 +119,20 @@ static void	ft_print_x_zero(t_parser *p)
 
 void		ft_print_x(t_parser *p)
 {
-	long int	number;
-	int			flag;
-	char		buf[20];
+	unsigned int	number;
+	int				flag;
+	char			buf[20];
 
 	flag = 0;
-	number = va_arg(p->ap, long int);
-	if (p->dot == '.' && p->width == 0 && p->accuracy == 0)
+	number = va_arg(p->ap, unsigned int);
+	if (p->dot != '.' && p->width == 0 && p->accuracy == 0 && number == 0)
+	{
+		ft_putchar_fd('0', 1, p);
 		return ;
+	}
 	if (p->type == 'x')
 		dec_to_hex(buf, number, flag);
 	else
 		dec_to_hex(buf, number, ++flag);
-	ft_process_x(p, buf);
-	if (!number)
-	{
-		ft_print_x_zero(p);
-		return ;
-	}
-	if (p->flags == '-')
-		ft_print_x_one(p, buf);
-	else
-		ft_print_x_two(p, buf);
+	ft_print_x_norm(p, buf, number);
 }
