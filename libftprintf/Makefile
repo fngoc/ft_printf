@@ -39,7 +39,7 @@ $(NAME): $(OBJ) $(HEADER)
 	ranlib $(NAME)
 
 %.o: %.c
-	gcc -c $(FLAG) $< -o $@
+	gcc $(FLAG) $(OPTION) $< -o $@
 
 clean:
 	rm -rf $(OBJ)
