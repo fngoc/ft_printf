@@ -7,40 +7,6 @@ int	main(void)
 {
 	int result1;
 	int result2;
-	puts("-------------------------------xX--------------------------------");
-	printf("%x\n", -2147483648);
-	ft_printf("%x\n", -2147483648);
-	printf("%x\n", -2147483648);
-	ft_printf("%x\n", -2147483648);
-	result1 = ft_printf("|%0*.*x| |%07.3x| |%-.3X| |%010.9X|", -16, 10, -2312, 125, INT_MAX, INT_MIN);
-	printf("\t\tmy result: %d\n", result1);
-	result2 = printf("|%0*.*x| |%07.3x| |%-.3X| |%010.9X|", -16, 10, -2312, 125, INT_MAX, INT_MIN);
-	printf("\t\tlb result: %d\n\n", result2);
-
-	result1 = ft_printf("|%0.0x| |%6.0x| |%0.1x| |%05.1x| |%0.0x| |%0.1x|", 0, 0, 0, 0, 1, 1);
-	printf("\t\tmy result: %d\n", result1);
-	result2 = printf("|%0.0x| |%6.0x| |%0.1x| |%05.1x| |%0.0x| |%0.1x|",  0, 0, 0, 0, 1, 1);
-	printf("\t\tlb result: %d\n\n", result2);
-
-	result1 = ft_printf("|%-.0X| |%-6.0X| |%-.1X| |%-1.1X| |%-.0X| |%-.1X|", 0, 0, 0, 0, 1, 1);
-	printf("\t\tmy result: %d\n", result1);
-	result2 = printf("|%-.0X| |%-6.0X| |%-.1X| |%-1.1X| |%-.0X| |%-.1X|",  0, 0, 0, 0, 1, 1);
-	printf("\t\tlb result: %d\n\n", result2);
-
-	result1 = ft_printf("|%*.*x| |%08.3x| |%0*x|", 8, 4, 2, 8375, -5, -54);
-	printf("\t\tmy result: %d\n", result1);
-	result2 = printf("|%*.*x| |%08.3x| |%0*x|", 8, 4, 2, 8375, -5, -54);
-	printf("\t\tlb result: %d\n\n", result2);
-
-	result1 = ft_printf("|%0*x|", 7, -54);
-	printf("\t\tmy result: %d\n", result1);
-	result2 = printf("|%0*x|", 7, -54);
-	printf("\t\tlb result: %d\n\n", result2);
-
-	result1 = ft_printf("%% *.5x 42 == |%*.5x|", 4, 42);
-	printf("\t\tmy result: %d\n", result1);
-	result2 = printf("%% *.5x 42 == |%*.5x|", 4, 42);
-	printf("\t\tlb result: %d\n\n", result2);
 
 	puts("--------------------------different types------------------------");
 	result1 = ft_printf("string |%%| string |%-4.12d| |%9s| |%7d| |%-12x| |%X| |%x|", 'a', "bcd", 3, -5, 234, 0xac45);
@@ -390,6 +356,41 @@ int	main(void)
 	result1 = ft_printf("|%.4u|", 2372);
 	printf("\t\tmy result: %d\n", result1);
 	result2 = printf("|%.4u|", 2372);
+	printf("\t\tlb result: %d\n\n", result2);
+	
+	puts("-------------------------------xX--------------------------------");
+	result1 = ft_printf("|%x|", -2147483648);
+	printf("\t\tmy result: %d\n", result1);
+	result2 = printf("|%x|", -2147483648);
+	printf("\t\tlb result: %d\n\n", result2);
+	result1 = ft_printf("|%0*.*x| |%07.3x| |%-.3X| |%010.9X|", -16, 10, -2312, 125, INT_MAX, INT_MIN);
+	printf("\t\tmy result: %d\n", result1);
+	result2 = printf("|%0*.*x| |%07.3x| |%-.3X| |%010.9X|", -16, 10, -2312, 125, INT_MAX, INT_MIN);
+	printf("\t\tlb result: %d\n\n", result2);
+
+	result1 = ft_printf("|%0.0x| |%6.0x| |%0.1x| |%05.1x| |%0.0x| |%0.1x|", 0, 0, 0, 0, 1, 1);
+	printf("\t\tmy result: %d\n", result1);
+	result2 = printf("|%0.0x| |%6.0x| |%0.1x| |%05.1x| |%0.0x| |%0.1x|",  0, 0, 0, 0, 1, 1);
+	printf("\t\tlb result: %d\n\n", result2);
+
+	result1 = ft_printf("|%-.0X| |%-6.0X| |%-.1X| |%-1.1X| |%-.0X| |%-.1X|", 0, 0, 0, 0, 1, 1);
+	printf("\t\tmy result: %d\n", result1);
+	result2 = printf("|%-.0X| |%-6.0X| |%-.1X| |%-1.1X| |%-.0X| |%-.1X|",  0, 0, 0, 0, 1, 1);
+	printf("\t\tlb result: %d\n\n", result2);
+
+	result1 = ft_printf("|%*.*x| |%08.3x| |%0*x|", 8, 4, 2, 8375, -5, -54);
+	printf("\t\tmy result: %d\n", result1);
+	result2 = printf("|%*.*x| |%08.3x| |%0*x|", 8, 4, 2, 8375, -5, -54);
+	printf("\t\tlb result: %d\n\n", result2);
+
+	result1 = ft_printf("|%0*x|", 7, -54);
+	printf("\t\tmy result: %d\n", result1);
+	result2 = printf("|%0*x|", 7, -54);
+	printf("\t\tlb result: %d\n\n", result2);
+
+	result1 = ft_printf("%% *.5x 42 == |%*.5x|", 4, 42);
+	printf("\t\tmy result: %d\n", result1);
+	result2 = printf("%% *.5x 42 == |%*.5x|", 4, 42);
 	printf("\t\tlb result: %d\n\n", result2);
 
 	puts("--------------------------------%--------------------------------");
