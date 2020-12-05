@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_x_or_X.c                                  :+:      :+:    :+:   */
+/*   ft_print_x.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fngoc <fngoc@student.42.fr>                +#+  +:+       +#+        */
+/*   By: vitmarkha <vitmarkha@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/12/03 11:59:45 by fngoc             #+#    #+#             */
-/*   Updated: 2020/12/03 11:59:45 by fngoc            ###   ########.fr       */
+/*   Created: 2020/12/05 21:43:55 by vitmarkha         #+#    #+#             */
+/*   Updated: 2020/12/05 21:43:58 by vitmarkha        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ static void	ft_print_x_zero_norm(t_parser *p, int old_width)
 ** ft_print_x_zero: если number == 0.
 */
 
-void		ft_print_x_zero(t_parser *p)
+static void	ft_print_x_zero(t_parser *p)
 {
 	int	old_width;
 
