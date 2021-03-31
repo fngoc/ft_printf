@@ -1,27 +1,29 @@
 # ft_printf
 
-## Описание
+## Description
 
-Мы перепишем функцию printf. После этого нам будет разрешено повторно использовать эту функцию в наших будущих проектах. В основном мы узнаем, как использовать вариативные аргументы.
+A rewritten printf function using variable arguments.
 
-Компилирование было с флагами: ``gcc -Wall -Wextra -Werror``.
+The compilation was with flags: ``gcc -Wall -Wextra -Werror``.
 
-Все файлы проходят на ``Norminette``.
+All files pass to ``Norminette``.
 
-## Использование
+No memory leaks.
 
-``make`` и ``make all`` собирают библиотеку с проектом, или перекомпилирую измененный файл, так же пересобирая библиотеку.
+## Using
 
-``make re`` удаляет все ``.o`` файлы, удаляет ``libftprintf.a``, пересобирает библиотеку.
+``make`` and ``make all`` build the library with the project, or recompile the modified file, also rebuilding the library.
 
-``make clean`` удаляет все ``.o`` файлы.
+``make re`` deletes all ``.o`` files, deletes ``libftprintf.a``, rebuilds the library.
 
-``make fclean`` удаляет все ``.o`` файлы, так же удаляет ``libftprintf.a``.
+``make clean`` deletes all ``.o`` files.
 
-## Оценка
-
-![alt tag](media/appraisal_ft_printf.png "Оценка проекта ft_printf")
+``make fclean`` deletes all ``.o`` files, also deletes ``libftprintf.a``.
 
 ## my_test
 
-Вставляем в папку с функциями ``main.c``, компилируем, смотрим на результат. Так же не забывайте проверять все возможные найденые тесты для своего ft_printf. Основа для тестов была взята у [timurmug](https://github.com/timurmug). Убранны все ``undefined behaviour`` тесты, добавлены свои тесты.
+Compiling the project with ``main.c``, and look at the result. Also, do not forget to check all possible found tests for your ft_printf. The basis for the tests was taken from [timurmug](https://github.com/timurmug). Removed all ``undefined behaviour`` tests, added their own tests.
+
+## Evaluation
+
+![alt tag](media/appraisal_ft_printf.png "Appraisal ft_printf")
