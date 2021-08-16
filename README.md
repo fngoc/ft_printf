@@ -23,7 +23,3 @@ No memory leaks.
 ## my_test
 
 Compiling the project with ``main.c``, and look at the result. Also, do not forget to check all possible found tests for your ft_printf. The basis for the tests was taken from [timurmug](https://github.com/timurmug). Removed all ``undefined behaviour`` tests, added their own tests.
-
-## Evaluation
-
-![alt tag](media/appraisal_ft_printf.png "Appraisal ft_printf")
