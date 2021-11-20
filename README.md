@@ -10,7 +10,7 @@ All files pass to ``Norminette``.
 
 No memory leaks.
 
-## Using
+## Usage
 
 ``make`` and ``make all`` build the library with the project, or recompile the modified file, also rebuilding the library.
 
